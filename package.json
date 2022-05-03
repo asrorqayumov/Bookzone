@@ -1,0 +1,28 @@
+{
+  "name": "bookzone",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "book",
+    "bookzone"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanjarAbduraimov/bookzone-v3.git"
+  },
+  "author": "Sanjar Abduraimov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SanjarAbduraimov/bookzone-v3/issues"
+  },
+  "s": "https://github.com/SanjarAbduraimov/bookzone-v3#readme",
+  "scripts": {
+    "build": "parcel build index.html",
+    "dev": "parcel index.html --open",
+    "start": "npm run build && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
