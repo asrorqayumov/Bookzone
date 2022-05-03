@@ -1,0 +1,197 @@
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 991px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+   // margin
+@for $i from 1 through 5 {
+    .m-#{$i}{
+        margin: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .ms-#{$i}{
+        margin-left: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .me-#{$i}{
+        margin-right: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .mt-#{$i}{
+        margin-top: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .mb-#{$i}{
+        margin-bottom: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .my-#{$i} {
+      margin-top: $i * 5px;
+      margin-bottom: $i * 5px;
+    }
+  }
+
+  @for $i from 1 through 5 {
+    .mx-#{$i} {
+      margin-left: $i * 5px;
+      margin-right: $i * 5px;
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .m-#{$mq}-#{$i} {
+          margin: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .mt-#{$mq}-#{$i} {
+          margin-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .mb-#{$mq}-#{$i} {
+          margin-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .ms-#{$mq}-#{$i} {
+          margin-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .me-#{$mq}-#{$i} {
+          margin-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+         // Padding 
+
+  @for $i from 1 through 5 {
+    .p-#{$i}{
+        padding: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .ps-#{$i}{
+        padding-left: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pe-#{$i}{
+        padding-right: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pt-#{$i}{
+        padding-top: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .pb-#{$i}{
+        padding-bottom: $i * 5px;
+    }
+}
+
+@for $i from 1 through 5 {
+    .py-#{$i} {
+     padding-top: $i * 5px;
+     padding-bottom: $i * 5px;
+    }
+  }
+
+  @for $i from 1 through 5 {
+    .px-#{$i} {
+      padding-left: $i * 5px;
+      padding-right: $i * 5px;
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .p-#{$mq}-#{$i} {
+          padding: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .pt-#{$mq}-#{$i} {
+          padding-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .pb-#{$mq}-#{$i} {
+          padding-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .ps-#{$mq}-#{$i} {
+          padding-top: $i * 5px ;
+        }
+      }
+    }
+  }
+
+  @each $mq in (sm, md, lg, xl, xxl) {
+    @media (min-width: map-get($breakpoints, $mq )) {
+      @for $i from 1 through 5 {
+        .pe-#{$mq}-#{$i} {
+          padding-top: $i * 5px ;
+        }
+      }
+    }
+  }
