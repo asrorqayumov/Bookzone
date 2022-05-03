@@ -1,0 +1,70 @@
+@use "sass:math";
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 991px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-fluid {
+  width: 100%;
+  padding: 0 1.5rem;
+}
+@each $mq in (sm, md, lg, xl, xxl) {
+  @media (min-width: map-get($breakpoints, $mq )) {
+    .container {
+      max-width: map-get($breakpoints, $mq);
+    }
+    .container-#{$mq} {
+      max-width: map-get($breakpoints, $mq);
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+@for $i from 1 through 5 {
+  .gap-#{$i} {
+    gap: $i * 1rem;
+  }
+}
+@each $mq in (sm, md, lg, xl, xxl) {
+  @media (min-width: map-get($breakpoints, $mq )) {
+    @for $i from 1 through 5 {
+      .gap-#{$mq}-#{$i} {
+        gap: $i * 1rem;
+      }
+    }
+  }
+}
+.col {
+  flex-grow: 1;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex-basis: math.div(100%, 12) * $i;
+    flex-grow: 1;
+  }
+}
+
+@each $mq in (sm, md, lg, xl, xxl) {
+  @media (min-width: map-get($breakpoints, $mq )) {
+    @for $i from 1 through 12 {
+      .col-#{$mq}-#{$i} {
+        flex-basis: math.div(100%, 12) * $i;
+        flex-grow: 1;
+      }
+    }
+  }
+}

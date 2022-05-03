@@ -1,0 +1,33 @@
+@mixin flexbox($fd, $ai, $jc) {
+  display: flex;
+  flex-direction: $fd;
+  align-items: $ai;
+  justify-content: $jc;
+}
+@mixin respond($size) {
+  @if $size == phone {
+    @media screen and (min-width: 576px) {
+      @content;
+    }
+  }
+  @if $size == tab-por {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $size == tab-land {
+    @media screen and (min-width: 991px) {
+      @content;
+    }
+  }
+  @if $size == laptop {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+  @if $size == desktop {
+    @media screen and (min-width: 1400px) {
+      @content;
+    }
+  }
+}
