@@ -1905,5 +1905,137 @@
     flex-grow: 1;
   }
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.tabs {
+  width: 100%;
+  min-height: 100vh;
+  background: #191919;
+}
+
+.tabs .tab-header {
+  margin: 0 200px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tabs .tab-header > div {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: capitalize;
+  outline: none;
+}
+
+.tabs .tab-header > div.active {
+  color: #C9AC8C;
+}
+
+.tabs .tab-body {
+  position: relative;
+  padding: 0px 90px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tabs .tab-body > div {
+  position: absolute;
+  top: -200%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 500ms ease-in-out 0ms, transform 500ms ease-in-out 0ms;
+}
+
+.tabs .tab-body > div.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.author__body {
+  background: #191919;
+  background-image: url(../../img/BG-png/ornament.png);
+  background-position-x: 100%;
+  background-position-y: 100%;
+  background-repeat: no-repeat;
+}
+.author__body .about__author {
+  width: 75%;
+  margin: 30px 0 40px 70px;
+}
+.author__body .about__author p {
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.author__body .about__author .birth__date,
+.author__body .about__author .death__date,
+.author__body .about__author .arrow__minus {
+  color: #C9AC8C;
+  font-weight: 400;
+  font-size: 39px;
+  margin: 13px 0 8px;
+}
+.author__body .author__title-wrapper .author__title {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 53px;
+  text-align: center;
+  margin: 50px 0 0 0;
+  color: #C9AC8C;
+}
+.author__body .author__title-wrapper .author__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 144.4%;
+  padding: 20px 80px 30px 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+.author__body .author__works-wrapper i {
+  color: #C9AC8C;
+  word-spacing: 9px;
+}
+.author__body .author__works-wrapper .works__text {
+  font-family: "Steinbeck";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 154.9%;
+  padding: 3px 230px 0 15px;
+  color: #FFFFFF;
+}
+.author__body .author__books-wrapper {
+  align-items: center;
+  justify-content: space-between;
+}
+.author__body .author__books-wrapper .books__title {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 31px;
+  line-height: 34px;
+  text-align: center;
+  color: #C9AC8C;
+}
+.author__body .author__books-wrapper .books__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
 
 /*# sourceMappingURL=main.css.map */
