@@ -2024,6 +2024,47 @@
     overflow-y: auto;
   }
 }
+.btn-lg {
+  width: 100%;
+  height: 46px;
+  background: #152540;
+  border-radius: 99px;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.btn-sm {
+  width: 142px;
+  height: 43px;
+  background: #152540;
+  border-radius: 4px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.btn-add {
+  width: 200px;
+  height: 48px;
+  background: #C9AC8C;
+  font-family: "Steinbeck";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3C2710;
+  cursor: pointer;
+}
+
 .card {
   width: 180px;
   margin: 5px;
