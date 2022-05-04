@@ -2025,14 +2025,21 @@
   }
 }
 .card {
-  width: 165px;
+  width: 180px;
   margin: 5px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px;
+  border-radius: 10px;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.05);
 }
 .card img {
   width: auto;
@@ -2051,14 +2058,114 @@
   color: #bd9b76;
 }
 
+.container-flip {
+  width: 100%;
+  height: 100%;
+}
+.container-flip .flip-card-3D-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.container-flip .flip-card-3D-wrapper #flip-card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -o-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  -o-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.container-flip .flip-card-3D-wrapper #flip-card-btn-turn-to-back,
+.container-flip .flip-card-3D-wrapper #flip-card-btn-turn-to-front {
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -o-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  z-index: 2;
+  display: flex;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front img,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back img {
+  object-fit: cover;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up .form-sign-up,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up .form-sign-up {
+  max-width: 500px;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up .form-title,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up .form-title {
+  font-family: "Arial Black";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 51px;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up input,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up input {
+  border: 1px solid #b4b4bb;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px;
+  outline: none;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up input::placeholder,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up input::placeholder {
+  color: #aaaaaa;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up .checkbox,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up .checkbox {
+  accent-color: green;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up .role,
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up .role {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-front {
+  color: #000;
+}
+.container-flip .flip-card-3D-wrapper #flip-card .flip-card-back {
+  -o-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.do-flip {
+  -o-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  background-color: #191919;
 }
 
 @font-face {

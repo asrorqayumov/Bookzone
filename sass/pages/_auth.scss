@@ -1,0 +1,92 @@
+.container-flip {
+  width: 100%;
+  height: 100%;
+  .flip-card-3D-wrapper {
+    width: 100%;
+    height: 100%;
+    #flip-card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      -o-transition: all 1s ease-in-out;
+      -webkit-transition: all 1s ease-in-out;
+      -ms-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out;
+      -o-transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+    #flip-card-btn-turn-to-back,
+    #flip-card-btn-turn-to-front {
+      text-decoration: none;
+      color: blue;
+      cursor: pointer;
+    }
+    #flip-card .flip-card-front,
+    #flip-card .flip-card-back {
+      img {
+        object-fit: cover;  
+      }
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      -o-backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
+      z-index: 2;
+      display: flex;
+      .form-up {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        .form-sign-up{
+            max-width: 500px;
+        }
+        .form-title {
+            font-family: 'Arial Black';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 51px;
+        }
+        input {
+            border: 1px solid #b4b4bb;
+            border-radius: 10px;
+            width: 100%;
+            padding: 15px;
+            outline: none;
+            &::placeholder {
+              color: #aaaaaa;
+            }
+          }
+          .checkbox {
+              accent-color: green;
+              width: 25px;
+              height: 25px;
+              cursor: pointer;
+          }
+          .role{
+              @include flexbox(row,center,space-around);
+          }
+      }
+    }
+    #flip-card .flip-card-front {
+      color: #000;
+    }
+    #flip-card .flip-card-back {
+      -o-transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.do-flip {
+  -o-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
