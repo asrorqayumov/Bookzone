@@ -1,4 +1,22 @@
 @import "./utils/index";
-@import "./layout/grid";
+@import "./layout/index";
 @import "./components/index";
 @import "./pages/index";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #191919;
+}
+@font-face {
+    font-family: Rotterburg;
+    src: url(../assets/fonts/rotterburg/RotterburgstylishfreeRegular-ZVZ5B.otf);
+}
+@font-face {
+    font-family:Helvetican;
+    src: url(../assets/fonts/helvetican/HelveticaNeueCyr-Light.otf);
+}

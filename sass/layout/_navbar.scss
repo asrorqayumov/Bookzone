@@ -1,0 +1,115 @@
+.nav {
+  height: 80px;
+  width: 100%;
+  background-color: #191919;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .nav-header {
+    display: inline;
+    .nav-title {
+      display: inline-block;
+      font-size: 25px;
+      color: #c9ac8c;
+      padding: 10px 10px 10px 10px;
+      font-family: Rotterburg;
+      font-weight: 400;
+    }
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-family: Helvetican;
+    div {
+      padding-left: 80px;
+    }
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 13px 10px 13px 10px;
+      text-decoration: none;
+      font-weight: 300;
+      color: #fff;
+      &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #c9ac8c;
+        bottom: -8px;
+        transition: .8s transform;
+        transform: scalex(0);
+        transform-origin: center;
+      }
+      &:hover::before {
+        transform: scaleX(1);
+        transform-origin: center;
+      }
+    }
+  }
+  #nav-check {
+    display: none;
+  }
+  .profile-logo img {
+    width: 60px;
+    border-radius: 50%;
+  }
+}
+@media (max-width: 650px) {
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    cursor: pointer;
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #191919;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 80px;
+    left: 0px;
+    text-align: center;
+    div {
+      padding-top: 30px;
+    }
+  }
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 12px;
+    width: 100%;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+}
