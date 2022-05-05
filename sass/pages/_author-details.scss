@@ -5,6 +5,18 @@
   background-position-y: 100%;
   background-repeat: no-repeat;
 
+  .aside{
+    
+    .author__img-wrapper{
+      .author__img{
+        margin-right: 80px;
+        img{
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
 
   .about__author {
     width: 75%;
@@ -12,19 +24,23 @@
 
     p {
       font-weight: 300;
-      font-size: 14px;
+      font-size: 15px;
+      letter-spacing: 1px;
       margin: 0px;
+      font-family: Helvetican;
       // line-height: 144.4%;
       color: rgba(255, 255, 255, 0.6);
     }
 
+  
     .birth__date,
     .death__date,
     .arrow__minus {
+      font-family: Rotterburg;
       color: #C9AC8C;
       font-weight: 400;
       font-size: 39px;
-      margin: 13px 0 8px;
+      margin: 13px 0 5px;
       // line-height: 144.4%
     }
   }
@@ -33,6 +49,7 @@
 
     .author__title {
       text-transform: uppercase;
+      font-family: Rotterburg;
       font-style: normal;
       font-weight: 400;
       font-size: 48px;
@@ -44,6 +61,7 @@
 
     .author__text {
       font-style: normal;
+      font-family: Helvetican;     
       font-weight: 400;
       font-size: 16px;
       line-height: 144.4%;
@@ -54,28 +72,33 @@
   }
 
   .author__works-wrapper {
+    flex-direction: row;
     i {
       color: #C9AC8C;
       word-spacing: 9px;
+      display: block;
     }
 
     .works__text {
-      font-family: 'Steinbeck';
+      font-family: Helvetican;
+      
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 154.9%;
-      padding: 3px 230px 0 15px;
+      padding: 5px 250px 0 15px;
       color: #FFFFFF;
     }
   }
 
-  .author__books-wrapper {
+  .author__books-title {
     align-items: center;
     justify-content:space-between;
+    padding: 50px 0 10px 0;
 
     .books__title {
       text-transform: uppercase;
+      font-family: Rotterburg;
       font-style: normal;
       font-weight: 400;
       font-size: 31px;
@@ -87,12 +110,30 @@
 
     .books__text {
       font-style: normal;
+      padding-right: 70px;
       font-weight: 400;
       font-size: 16px;
       line-height: 16px;
       text-align: center;
-
+      font-family: Helvetican;
       color: #FFFFFF;
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;      
+      }
+    }
+  }
+
+  .author__books-wrapper{
+    
+    // width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: nowrap !important;
+    // overflow: scroll !important;
+
+    .card{
+      margin-right: 40px;
     }
   }
 
