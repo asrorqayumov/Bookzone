@@ -1,5 +1,5 @@
 .btn-lg{
-    width: 328px;
+    width: 100%;
     height: 46px;
     background: #152540;
     border-radius: 99px;
@@ -10,6 +10,7 @@
     line-height: 36px;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 };
 .btn-sm{
     width: 142px;
@@ -22,7 +23,7 @@
     font-size: 13px;
     line-height: 20px;
     color: #FFFFFF;
-  
+    cursor: pointer;
 };
 .btn-add{
     width: 200px;
@@ -34,7 +35,7 @@
     font-size: 16px;
     line-height: 16px;
     color: #3C2710;
-
+    cursor: pointer;
 
 }
 .home-btn{
