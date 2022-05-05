@@ -16,7 +16,8 @@ $breakpoints: (
 }
 .container-fluid {
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0;
+  margin:auto;
 }
 @each $mq in (sm, md, lg, xl, xxl) {
   @media (min-width: map-get($breakpoints, $mq )) {

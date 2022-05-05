@@ -1358,7 +1358,8 @@
 
 .container-fluid {
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0;
+  margin: auto;
 }
 
 @media (min-width: 576px) {
@@ -2034,6 +2035,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 36px;
+  text-align: center;
   color: #FFFFFF;
   cursor: pointer;
 }
@@ -2201,6 +2203,67 @@
   -webkit-transform: rotateY(-180deg);
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
+}
+
+#addbook .form-addbook .container-upload-img {
+  background: rgba(243, 243, 243, 0.93);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#addbook .form-addbook .container-upload-img img {
+  width: 300px;
+  height: 482.33px;
+  object-fit: inital;
+}
+#addbook .form-addbook .container-upload-img img[src=""] {
+  visibility: hidden;
+}
+#addbook .form-addbook .container-upload-img img[alt=""] {
+  visibility: visible !important;
+  display: block;
+}
+#addbook .form-addbook .container-upload-img label {
+  cursor: pointer;
+  padding: 5px 20px 5px 20px;
+  width: 60% !important;
+}
+#addbook .form-addbook .container-upload-img #upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+#addbook .form-addbook .container-form-addbook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#addbook .form-addbook .container-form-addbook div {
+  max-width: 500px;
+}
+#addbook .form-addbook .container-form-addbook div .form-title {
+  font-family: "Arial Black";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 51px;
+}
+#addbook .form-addbook .container-form-addbook div input, #addbook .form-addbook .container-form-addbook div textarea {
+  border: 1px solid #b4b4bb;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px;
+  outline: none;
+}
+#addbook .form-addbook .container-form-addbook div input::placeholder, #addbook .form-addbook .container-form-addbook div textarea::placeholder {
+  color: #aaaaaa;
+}
+#addbook .form-addbook .container-form-addbook div #description {
+  height: 100px;
 }
 
 * {
