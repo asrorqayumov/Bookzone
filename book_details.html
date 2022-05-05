@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Details</title>
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
 <body>
-  
+
   <div class="nav">
     <input type="checkbox" id="nav-check" />
     <div class="nav-header">
@@ -39,7 +43,7 @@
     <a class="profile-logo" href="profile.html">
       <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
     </a>
-  </div> 
+  </div>
 
   <div class="book__body">
 
@@ -93,9 +97,16 @@
           </div>
 
           <div class="row">
-            <p>Роман ўтган асрнинг йигирманчи йилларида Германияда таҳсил олган ва собиқ Совет Иттифоқи томонидан шафқатсизларча қатл этилган миллат йигит-қизларининг  хотирасига бағишланади. 
+            <p>Роман ўтган асрнинг йигирманчи йилларида Германияда таҳсил олган ва собиқ Совет Иттифоқи томонидан
+              шафқатсизларча қатл этилган миллат йигит-қизларининг хотирасига бағишланади.
 
-              <br> Роман воқеаларини қисқача сўзлар билан ифода этиб бўлмайди. Барчаси шу қадар  тиғизки, шошириб қўяди. Мажоз, образ, ифода, ўт, ҳеч кимникига ўхшамаган лиризмни ҳис қиласиз. Миллият, соф муҳаббат,  кўринмас ва ошкор фожиалар, тарих, бугун ва эртанинг бир-бирига кавшарланган ҳалқаси, ростлик даъвосидаги ёлғонлар, руҳ ва қондаги парадокслар сизни ўтмиш ва келажак куйига асир қилади, ўйлатади, йиғлатади ва аччиқ-аччиқ кулдиради.  Ўтган аср бошида Германияда ўқиган талабалар, улар маслаги ва фожиали қисмати бугунги ёшлар мақсади билан бир тарозига тортилади.</p>
+              <br> Роман воқеаларини қисқача сўзлар билан ифода этиб бўлмайди. Барчаси шу қадар тиғизки, шошириб қўяди.
+              Мажоз, образ, ифода, ўт, ҳеч кимникига ўхшамаган лиризмни ҳис қиласиз. Миллият, соф муҳаббат, кўринмас ва
+              ошкор фожиалар, тарих, бугун ва эртанинг бир-бирига кавшарланган ҳалқаси, ростлик даъвосидаги ёлғонлар,
+              руҳ ва қондаги парадокслар сизни ўтмиш ва келажак куйига асир қилади, ўйлатади, йиғлатади ва аччиқ-аччиқ
+              кулдиради. Ўтган аср бошида Германияда ўқиган талабалар, улар маслаги ва фожиали қисмати бугунги ёшлар
+              мақсади билан бир тарозига тортилади.
+            </p>
           </div>
 
           <div class="row">
@@ -134,34 +145,40 @@
       </div>
 
     </div>
+
     
-    <div class="row">
 
       <!-- <div class="col">Muallif haqida</div>
       <div class="col">Kitobdan iqtiboslar</div>
       <div class="col">Kitobxonlar taqrizi</div> -->
 
-      <div class="tabs">
-        <div class="tab-header">
-          <div >Muallif haqida</div>
-          <div class="active" >Kitobdan iqtiboslar</div>
-          <div >Kitobxonlar taqrizi</div>
-        </div>
-  
-        <div class="tab-body">
-          <div >
-            <h2>this code section</h2>
-          </div>
-          <div class="active">
-            <h2>this about section</h2>
-          </div>
-          <div>
-            <h2>this services section</h2>
-          </div>
-        </div>
-    </div>
+      
+      <div class="tab__wrapper">
 
-    </div>
+        <ul class="tab__menu">
+          <li class="active" data-target="#bir">Birinchi</li>
+          <li data-target="#ikki">Ikkinchi</li>
+          <li data-target="#uch">Uchinchi</li>
+          <li data-target="#tort">To'rtinchi</li>
+        </ul>
+    
+        <div class="tab__content">
+          <div data-content id="bir" class="active">
+            <div>Birinchi section</div>
+          </div>
+          <div data-content id="ikki">
+            <div>Ikkinchi section</div>
+          </div>
+          <div data-content id="uch">
+            <div>Uchunchi section</div>
+          </div>
+          <div data-content id="tort">
+            <div>To'rtinchi section</div>
+          </div>
+        </div>
+      </div>
+
+  
 
   </div>
 
