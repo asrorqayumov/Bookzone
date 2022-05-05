@@ -19,10 +19,16 @@
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
+    "sass": "sass --watch sass:css",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "@webpack-cli/generators": "^2.4.2",
+    "parcel-bundler": "^1.12.4",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }
