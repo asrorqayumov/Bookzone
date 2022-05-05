@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+.tab__menu {
+  display: flex;
+ justify-content: space-evenly;
+ height: 60px;
+ align-items: center;
+
+  li {
+    list-style: none;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: Helvetican;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+
+    &:hover{
+      color:  #C9AC8C;
+      transition: .3s ease;
+    }
+
+  }
+}
+
+
+
+[data-content] {
+  display: none;
+}
+.active[data-target]{
+  color: #C9AC8C;
+}
+.active[data-content] {
+  display: block;
+}

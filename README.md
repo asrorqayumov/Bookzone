@@ -14,7 +14,7 @@
 
 > App for bookworms
 
-### 🏠 [Homepage](https://bookzone.uz)
+### 🏠 [Homepage](https://sanjarabduraimov.github.io/bookzone-v3)
 
 ## Install
 

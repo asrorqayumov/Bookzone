@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+  <div class="tab__wrapper">
+
+    <ul class="tab__menu">
+      <li class="active" data-target="#bir">Birinchi</li>
+      <li data-target="#ikki">Ikkinchi</li>
+      <li data-target="#uch">Uchinchi</li>
+      <li data-target="#tort">To'rtinchi</li>
+    </ul>
+
+    <div class="tab__content">
+      <div data-content id="bir" class="active">
+        <div>Birinchi section</div>
+      </div>
+      <div data-content id="ikki">
+        <div>Ikkinchi section</div>
+      </div>
+      <div data-content id="uch">
+        <div>Uchunchi section</div>
+      </div>
+      <div data-content id="tort">
+        <div>To'rtinchi section</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="./js/tab.js"></script>
+
+</html>
