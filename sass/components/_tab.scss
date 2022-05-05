@@ -1,0 +1,55 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.tabs{
+  width: 100%;
+  min-height: 100vh;
+  background: 
+  #191919;
+  
+}
+
+.tabs .tab-header{
+  margin: 0 200px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.tabs .tab-header > div{
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: capitalize;
+  outline: none;
+}
+
+.tabs .tab-header > div.active{
+  color:#C9AC8C;
+}
+
+.tabs .tab-body {
+  position: relative;
+  padding: 0px 90px;
+  color: rgba(255, 255, 255, 0.6);
+
+}
+.tabs .tab-body > div {
+  position: absolute;
+  top: -200%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:opacity 500ms ease-in-out 0ms,
+  transform 500ms ease-in-out 0ms;
+}
+.tabs .tab-body > div.active{
+  opacity: 1;
+  transform: scale(1);
+}
