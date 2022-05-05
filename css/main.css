@@ -2034,8 +2034,6 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 36px;
-  display: flex;
-  align-items: center;
   text-align: center;
   color: #FFFFFF;
 }
@@ -2057,6 +2055,19 @@
   width: 200px;
   height: 48px;
   background: #C9AC8C;
+  font-family: "Steinbeck";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3C2710;
+}
+
+.home-btn {
+  width: 160.21px;
+  height: 47.02px;
+  background: #C9AC8C;
+  border-radius: 15px;
   font-family: "Steinbeck";
   font-style: normal;
   font-weight: 400;
@@ -2092,11 +2103,17 @@
   color: #bd9b76;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+form {
+  text-align: center;
+  margin-top: 13px;
 }
 
+.form-title {
+  margin-top: 380px;
+  text-align: center;
+  font-family: "Rotterburg";
+
+}
 .tabs {
   width: 100%;
   min-height: 100vh;
@@ -2231,6 +2248,109 @@ body {
   font-weight: 400;
   font-size: 31px;
   line-height: 34px;
+  color: #C9AC8C;
+}
+
+.home-input {
+  width: 709.58px;
+  height: 47.02px;
+  background: #404040;
+  border-radius: 15px;
+  padding-left: 40px;
+  font-family: "Steinbeck";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height */
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.fa-magnifying-glass {
+  padding-right: 10px;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.fa-solid {
+  color: #3C2710;
+}
+
+.home-title {
+  margin-top: 64px;
+  font-family: "Rotterburg";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 31px;
+  line-height: 34px;
+  text-align: center;
+  color: #C9AC8C;
+}
+
+.warpper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0px 2px;
+  background: transparent;
+  display: inline-block;
+  color: #FFFFFF;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.panels {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  background: transparent;
+  min-height: 200px;
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.panel {
+  display: none;
+  animation: fadein 0.8s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.panel-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.radio {
+  display: none;
+}
+
+#one:checked ~ .panels #one-panel,
+#two:checked ~ .panels #two-panel,
+#three:checked ~ .panels #three-panel {
+  display: block;
+}
+
+#one:checked ~ .tabs #one-tab,
+#two:checked ~ .tabs #two-tab,
+#three:checked ~ .tabs #three-tab {
+  background: #191919;
+  color: #C9AC8C;
   text-align: center;
   color: #C9AC8C;
 }

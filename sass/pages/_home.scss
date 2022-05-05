@@ -1,8 +1,10 @@
+
 form{
     text-align: center;
     margin-top: 13px;
 }
 .form-title{
+    margin-top: 380px;
     text-align: center;
     font-family: 'Rotterburg';
 font-style: normal;
@@ -30,6 +32,12 @@ line-height: 16px;
 color: rgba(255, 255, 255, 0.3);
 
 }
+.fa-magnifying-glass{
+    padding-right: 10px;
+}
+.card-text{
+    text-align: center;
+}
 .fa-solid{
     color: #3C2710;
 }
@@ -44,3 +52,60 @@ text-align: center;
 color: #C9AC8C;
 
 }
+  .warpper{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .tab{
+    cursor: pointer;
+    padding:10px 20px;
+    margin:0px 2px;
+    background: transparent;
+    display:inline-block;
+    color:#FFFFFF;
+    border-radius:3px 3px 0px 0px;
+  }
+  .panels{
+      margin-top: 50px;
+      margin-bottom: 100px;
+    background: transparent;
+    min-height:200px;
+    width:100%;
+    max-width:1200px;
+    border-radius:3px;
+    overflow:hidden;
+    padding:20px;  
+  }
+  .panel{
+    display:none;
+    animation: fadein .8s;
+  }
+  @keyframes fadein {
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  .panel-title{
+    font-size:1.5em;
+    font-weight:bold
+  }
+  .radio{
+    display:none;
+  }
+  #one:checked ~ .panels #one-panel,
+  #two:checked ~ .panels #two-panel,
+  #three:checked ~ .panels #three-panel{
+    display:block
+  }
+  #one:checked ~ .tabs #one-tab,
+  #two:checked ~ .tabs #two-tab,
+  #three:checked ~ .tabs #three-tab{
+    background:#191919;
+    color:#C9AC8C;
+    
+  }
