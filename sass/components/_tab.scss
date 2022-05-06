@@ -1,55 +1,48 @@
-// body{
-//   margin: 0;
-//   padding: 0;
-// }
+body {
+  margin: 0;
+  padding: 0;
+}
 
-// .tabs{
-//   width: 100%;
-//   min-height: 100vh;
-//   background: 
-//   #191919;
-  
-// }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-// .tabs .tab-header{
-//   margin: 0 200px;
-//   height: 60px;
-//   display: flex;
-//   align-items: center;
-//   display: flex;
-//   justify-content: space-evenly;
+}
 
-// }
-// .tabs .tab-header > div{
-//   text-align: center;
-//   color: rgba(255, 255, 255, 0.6);
-//   font-family: 'Poppins', sans-serif;
-//   font-weight: 300;
-//   cursor: pointer;
-//   font-size: 14px;
-//   text-transform: capitalize;
-//   outline: none;
-// }
+.tab__menu {
+  display: flex;
+ justify-content: space-evenly;
+ height: 60px;
+ align-items: center;
 
-// .tabs .tab-header > div.active{
-//   color:#C9AC8C;
-// }
+  li {
+    list-style: none;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: Helvetican;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
 
-// .tabs .tab-body {
-//   position: relative;
-//   padding: 0px 90px;
-//   color: rgba(255, 255, 255, 0.6);
+    &:hover{
+      color:  #C9AC8C;
+      transition: .3s ease;
+    }
 
-// }
-// .tabs .tab-body > div {
-//   position: absolute;
-//   top: -200%;
-//   opacity: 0;
-//   transform: scale(0.9);
-//   transition:opacity 500ms ease-in-out 0ms,
-//   transform 500ms ease-in-out 0ms;
-// }
-// .tabs .tab-body > div.active{
-//   opacity: 1;
-//   transform: scale(1);
-// }
+  }
+}
+
+
+
+[data-content] {
+  display: none;
+}
+.active[data-target]{
+  color: #C9AC8C;
+}
+.active[data-content] {
+  display: block;
+}
