@@ -1,7 +1,7 @@
 #addbook {
   .form-addbook {
     .container-upload-img {
-      background: rgba(243, 243, 243, 0.93);
+      background:$darkbg;
       min-height: 100vh;
       @include flexbox(column, center, space-evenly);
       img {
@@ -35,15 +35,13 @@
                 line-height: 51px;
             }
             input,textarea {
-                border: 1px solid #b4b4bb;
-                font-family: "Roboto", sans-serif;
-                border-radius: 10px;
-                width: 100%;
-                padding: 15px;
-                outline: none;
-                &::placeholder {
-                  color: #aaaaaa;
-                }
+              width: 100%;
+              padding: 15px;
+              border: none;
+              outline: none;
+              border-radius: 15px;
+              background: #232323;
+              color: #fff;
               }
               #description{
                 height: 100px;

@@ -1970,6 +1970,14 @@
   width: 60px;
   border-radius: 50%;
 }
+.nav .link-auth {
+  display: none;
+  text-decoration: none;
+  color: #fff;
+}
+.nav .link-auth:hover {
+  color: #C9AC8C;
+}
 
 @media (max-width: 650px) {
   .nav > .nav-btn {
@@ -2025,12 +2033,16 @@
     overflow-y: auto;
   }
 }
-form {
+#home__page {
+  background: #191919;
+}
+
+form.home__search {
   text-align: center;
   margin-top: 13px;
 }
 
-.form-title {
+.home-form-title {
   margin-top: 380px;
   text-align: center;
   font-family: "Rotterburg";
@@ -2038,7 +2050,7 @@ form {
   font-weight: 400;
   font-size: 31px;
   line-height: 34px;
-  color: #C9AC8C;
+  color: #c9ac8c;
 }
 
 .home-input {
@@ -2065,7 +2077,7 @@ form {
 }
 
 .fa-solid {
-  color: #3C2710;
+  color: #3c2710;
 }
 
 .home-title {
@@ -2076,7 +2088,7 @@ form {
   font-size: 31px;
   line-height: 34px;
   text-align: center;
-  color: #C9AC8C;
+  color: #c9ac8c;
 }
 
 .warpper {
@@ -2092,7 +2104,7 @@ form {
   margin: 0px 2px;
   background: transparent;
   display: inline-block;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 3px 3px 0px 0px;
 }
 
@@ -2140,7 +2152,7 @@ form {
 #two:checked ~ .tabs #two-tab,
 #three:checked ~ .tabs #three-tab {
   background: #191919;
-  color: #C9AC8C;
+  color: #c9ac8c;
 }
 
 .author__body {
@@ -2286,11 +2298,12 @@ form {
   -ms-backface-visibility: hidden;
   backface-visibility: hidden;
   z-index: 2;
-  display: flex;
 }
 .container-flip .flip-card-3D-wrapper #flip-card .flip-card-front img,
 .container-flip .flip-card-3D-wrapper #flip-card .flip-card-back img {
   object-fit: cover;
+  width: 100%;
+  height: 100vh;
 }
 .container-flip .flip-card-3D-wrapper #flip-card .flip-card-front .form-up,
 .container-flip .flip-card-3D-wrapper #flip-card .flip-card-back .form-up {
@@ -2353,8 +2366,32 @@ form {
   transform: rotateY(-180deg);
 }
 
+.form-sign-in {
+  position: relative;
+}
+.form-sign-in span {
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 200px;
+  right: 18px;
+}
+.form-sign-in .input-eye:valid ~ span {
+  display: block;
+}
+.form-sign-in span i.hide-btn::before {
+  content: "\f070";
+}
+
+.w-100 {
+  width: 100%;
+}
+
 #addbook .form-addbook .container-upload-img {
-  background: rgba(243, 243, 243, 0.93);
+  background: #191919;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -2396,18 +2433,154 @@ form {
   line-height: 51px;
 }
 #addbook .form-addbook .container-form-addbook div input, #addbook .form-addbook .container-form-addbook div textarea {
-  border: 1px solid #b4b4bb;
-  font-family: "Roboto", sans-serif;
-  border-radius: 10px;
   width: 100%;
   padding: 15px;
+  border: none;
   outline: none;
-}
-#addbook .form-addbook .container-form-addbook div input::placeholder, #addbook .form-addbook .container-form-addbook div textarea::placeholder {
-  color: #aaaaaa;
+  border-radius: 15px;
+  background: #232323;
+  color: #fff;
 }
 #addbook .form-addbook .container-form-addbook div #description {
   height: 100px;
+}
+
+.container-profile .profile-wrapper {
+  background: radial-gradient(85.43% 1678.66% at 98.07% 50%, #2f2f2f 0%, #171717 100%);
+  border-radius: 8px;
+}
+.container-profile .profile-wrapper .profile-about {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content .profil-info-left {
+  text-align: center;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content .profil-info-left img {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content .profil-info-left img[src=""] {
+  visibility: hidden;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content .profil-info-left .fair-text {
+  font-size: 20px;
+}
+.container-profile .profile-wrapper .profile-about .profile-about-content .profile-info-right {
+  line-height: 35px;
+}
+.container-profile .profile-wrapper .profile-circle-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-tab li {
+  font-size: 17px !important;
+}
+
+.profile-book-wrapper .card {
+  margin: 20px !important;
+}
+
+.form-change-data .col-md-4 {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.form-change-data .col-md-4 .profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+.form-change-data .col-md-4 img[src=""] {
+  visibility: hidden;
+}
+.form-change-data .col-md-4 label {
+  position: relative;
+  background: #fff;
+  padding: 12px 9px 11px 9px;
+  border-radius: 8px;
+  bottom: 20px;
+  right: 40px;
+  cursor: pointer !important;
+}
+.form-change-data .col-md-4 label i {
+  font-size: 20px;
+  color: #000;
+}
+.form-change-data .col-md-4 input {
+  display: none;
+}
+.form-change-data .col-md-8 {
+  font-family: "Poppins";
+  font-style: normal;
+}
+.form-change-data .col-md-8 h2 {
+  font-weight: 500;
+  font-size: 25px;
+}
+.form-change-data .col-md-8 label {
+  position: absolute;
+  font-size: 16px;
+  color: #ece5e5;
+}
+.form-change-data .col-md-8 input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: #232323;
+  color: #fff;
+}
+.form-change-data .col-md-8 input::placeholder {
+  color: #fff;
+}
+
+#bg-dark {
+  background-color: #191919;
+  color: #fff;
+}
+
+.fair-text {
+  color: #C9AC8C;
+  font-weight: 400;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.change-data-btn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mt-40 {
+  margin-top: 40px;
 }
 
 .btn-lg {
@@ -2423,6 +2596,7 @@ form {
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
+  border: none;
 }
 
 .btn-sm {
@@ -2437,6 +2611,7 @@ form {
   line-height: 20px;
   color: #FFFFFF;
   cursor: pointer;
+  border: none;
 }
 
 .btn-add {
@@ -2484,6 +2659,7 @@ form {
 }
 .card img {
   width: auto;
+  max-width: 100%;
   border-radius: 5px;
 }
 .card .card-title {
