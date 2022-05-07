@@ -1,86 +1,165 @@
 <!DOCTYPE html>
-<html  lang="eng">
+<html class="no-js" lang="">
   <head>
     <meta charset="utf-8" />
-    <title>Sign in & Sign Up</title>
+    <title>Bookzone</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
     <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <meta name="theme-color" content="#fafafa" />
   </head>
   <body>
     <div class="container-flip">
       <div class="flip-card-3D-wrapper">
         <div id="flip-card">
           <div class="flip-card-front">
-           <img  src="./assets/images/auth/Sign In (1).png" alt="">
-          <div class="form-up">
-          <form class="form-sign-in" action="">
-            <h1 class="form-title pb-2">Sign In</h1>
-            <p class="form-text">
-            Do not you have an account?
-             <a  id="flip-card-btn-turn-to-back">Sign Up</a>
-            </p>
-            <input class="mt-5" type="email" name="email" placeholder="Email" required> 
-            <input class="mt-5 mb-4 " type="password" name="password" placeholder="Password" required> 
-          <button class="mt-5 btn-lg">
-            Next Steep
-          </button>
-          </form>
-          </div>
+            <!-- <img  src="./assets/images/auth/Sign In (1).png" alt=""> -->
+            <div class="form-up">
+              <form class="form-sign-in" action="">
+                <h1 class="form-title pb-2">Sign In</h1>
+                <p class="form-text">
+                  Do not you have an account?
+                  <a id="flip-card-btn-turn-to-back">Sign Up</a>
+                </p>
+                <input
+                  class="mt-5"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  class="mt-5 mb-4"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <button class="mt-5 btn-lg">Next Steep</button>
+              </form>
+            </div>
           </div>
           <div class="flip-card-back">
-           <img src="./assets/images/auth/Sign Up (1).png" alt="">
-           <div class="form-up">
-            <form class="form-sign-up" action="">
-              <h1 class="form-title pb-2">Sign Up</h1>
-              <p class="form-text">
-             Already have an account?
-              <a  id="flip-card-btn-turn-to-front">Sign In</a>
-              </p>
-              <input class="mt-5" type="text" name="firstname" placeholder="First name" required> 
-              <input class="mt-5" type="text" name="lastname" placeholder="Last name" required>
-              <input class="mt-5" type="number" name="phone" placeholder="Phone" required>
-              <input class="mt-5" type="email" name="email" placeholder="Email" required> 
-              <input class="mt-5" type="password" name="password" placeholder="Password" required> 
-              <div class="role mt-5 mb-4">
-                Your Role: 
-                <input type="radio" id="author"
-                name="contact" class="checkbox" value="author">
-                 <label for="author">Author</label>
+            <!-- <img src="./assets/images/auth/Sign Up (1).png" alt=""> -->
+            <div class="form-up">
+              <form class="form-sign-up" action="">
+                <h1 class="form-title pb-2">Sign Up</h1>
+                <p class="form-text">
+                  Already have an account?
+                  <a id="flip-card-btn-turn-to-front">Sign In</a>
+                </p>
+                <input
+                  class="mt-5"
+                  type="text"
+                  name="firstname"
+                  placeholder="First name"
+                  required
+                />
+                <input
+                  class="mt-5"
+                  type="text"
+                  name="lastname"
+                  placeholder="Last name"
+                  required
+                />
+                <input
+                  class="mt-5"
+                  type="number"
+                  name="phone"
+                  placeholder="Phone"
+                  required
+                />
+                <input
+                  class="mt-5"
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  class="mt-5"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <div class="role mt-5 mb-4">
+                  Your Role:
+                  <input
+                    type="radio"
+                    id="author"
+                    name="contact"
+                    class="checkbox"
+                    value="author"
+                  />
+                  <label for="author">Author</label>
 
-               <input type="radio" id="reader"
-              name="contact" class="checkbox" value="reader">
-               <label for="reader">Reader</label>
-              </div>
+                  <input
+                    type="radio"
+                    id="reader"
+                    name="contact"
+                    class="checkbox"
+                    value="reader"
+                  />
+                  <label for="reader">Reader</label>
+                </div>
 
-            <button class="mt-5 btn-lg">
-              Next Steep
-            </button>
-            </form>
+                <button class="mt-5 btn-lg">Next Steep</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  <script>
-  document.addEventListener('DOMContentLoaded', function(event) {
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        document.getElementById("flip-card-btn-turn-to-back").style.visibility =
+          "visible";
+        document.getElementById(
+          "flip-card-btn-turn-to-front"
+        ).style.visibility = "visible";
 
-document.getElementById('flip-card-btn-turn-to-back').style.visibility = 'visible';
-document.getElementById('flip-card-btn-turn-to-front').style.visibility = 'visible';
+        document.getElementById("flip-card-btn-turn-to-back").onclick =
+          function () {
+            document.getElementById("flip-card").classList.toggle("do-flip");
+          };
 
-document.getElementById('flip-card-btn-turn-to-back').onclick = function() {
-document.getElementById('flip-card').classList.toggle('do-flip');
-};
-
-document.getElementById('flip-card-btn-turn-to-front').onclick = function() {
-document.getElementById('flip-card').classList.toggle('do-flip');
-};
-
-});
-  </script>
+        document.getElementById("flip-card-btn-turn-to-front").onclick =
+          function () {
+            document.getElementById("flip-card").classList.toggle("do-flip");
+          };
+      });
+    </script>
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer type="module" src="js/router.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("set", "anonymizeIp", true);
+      ga("set", "transport", "beacon");
+      ga("send", "pageview");
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
+  </body>
 </html>

@@ -18,7 +18,7 @@
   "s": "https://github.com/SanjarAbduraimov/bookzone-v3#readme",
   "scripts": {
     "build": "parcel build index.html",
-    "dev": "parcel index.html --open",
+    "dev": "parcel ./*.html --open",
     "sass": "sass --watch sass:css",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
