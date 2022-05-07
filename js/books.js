@@ -1,17 +1,12 @@
-// import axios from "../node_modules/axios/dist/axios.js";
-// get axios js as default from node_modules folder;
+import axios from "./axios";
 
-import configs from "../configs.js";
-const { DEFAULT_IMG, BASE_URL } = configs;
+import configs from "../configs";
+const { DEFAULT_IMG } = configs;
 export async function getBooks() {
-  console.log("salom");
   try {
-    const url = `${BASE_URL}books`;
-    console.log(url);
-    // const data = await axios(url);
-    const response = await fetch(url);
-    const data = await response.json();
-    return data?.payload;
+    const response = await axios("/books");
+    console.log(response, "response");
+    return response?.data.payload;
   } catch (error) {
     throw new Error(error.message);
   }

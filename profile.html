@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html  class="no-js" lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
     <link rel="apple-touch-icon" href="icon.png" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="sass/main.scss" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="col-md-6 profile-circle-img">
-          <img src="./assets/images/profile/profile-circle.png" alt="" />
+          <!-- <img src="./assets/images/profile/profile-circle.png" alt="" /> -->
         </div>
       </div>
     </header>
@@ -85,7 +85,7 @@
           <div class="row profile-book-row">
             <div class="card">
               <a href="book.html">
-                <img src="./assets/images/book.png" alt="Avatar" />
+                <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
               </a>
               <div class="card-body pt-2">
                 <a href="books.html" class="card-title">dunyoning ishlari</a>
@@ -98,7 +98,7 @@
             </div>
             <div class="card">
               <a href="book.html">
-                <img src="./assets/images/book.png" alt="Avatar" />
+                <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
               </a>
               <div class="card-body pt-2">
                 <a href="books.html" class="card-title">dunyoning ishlari</a>
@@ -223,7 +223,7 @@
                       placeholder="Firstname"
                     />
                     <br />
-                    <label class="mt-4"  for="lastname">Last Name</label> <br />
+                    <label class="mt-4" for="lastname">Last Name</label> <br />
                     <input
                       class="mt-40"
                       type="text"
@@ -231,7 +231,7 @@
                       placeholder="Lastname"
                     />
                     <br />
-                    <label  class="mt-4" for="password">Password</label> <br />
+                    <label class="mt-4" for="password">Password</label> <br />
                     <input
                       class="mt-40"
                       type="password"
@@ -274,7 +274,20 @@
 
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer type="module" src="js/router.js"></script>
+    <script src="js/router.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("set", "anonymizeIp", true);
+      ga("set", "transport", "beacon");
+      ga("send", "pageview");
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
   </body>
 </html>

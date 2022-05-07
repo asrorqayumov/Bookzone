@@ -14,7 +14,7 @@
     <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />
     <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="sass/main.scss" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -51,9 +51,7 @@
       <a class="profile-logo" href="profile.html">
         <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
       </a>
-      <a class="link-auth" href="auth.html">
-        Sign in
-      </a>
+      <a class="link-auth" href="auth.html"> Sign in </a>
     </div>
     <section class="">
       <div class="container">
@@ -61,17 +59,17 @@
           <div class="col">
             <h5 class="form-title">QIDIRISH</h5>
 
-        <form class="home__search">
-          <input
-            class="home-input"
-            type="text"
-            placeholder="Adiblar, kitonlar, audiolar, maqolalar ..."
-          />
-          <button class="home-btn">
-            <i class="fa-solid fa-magnifying-glass"></i>Izlash
-          </button>
-        </form>
-        <h3 class="home-title">ASOSIY KATEGORIYALAR</h3>
+            <form class="home__search">
+              <input
+                class="home-input"
+                type="text"
+                placeholder="Adiblar, kitonlar, audiolar, maqolalar ..."
+              />
+              <button class="home-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>Izlash
+              </button>
+            </form>
+            <h3 class="home-title">ASOSIY KATEGORIYALAR</h3>
             <ul class="tab__menu">
               <li class="active" data-target="#bir">Temuriylar Davri</li>
               <li data-target="#ikki">Jadid adabiyoti</li>
@@ -100,10 +98,12 @@
               <div data-content id="ikki">
                 <div class="card">
                   <a href="book.html">
-                    <img src="./assets/images/home/image 2.png" alt="Avatar" />
+                    <!-- <img src="./assets/images/home/image 2.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="books.html" class="card-title">dunyoning ishlari</a>
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
+                    >
                     <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
@@ -115,10 +115,12 @@
               <div data-content id="uch">
                 <div class="card">
                   <a href="book.html">
-                    <img src="./assets/images/home/image 3.png" alt="Avatar" />
+                    <!-- <img src="./assets/images/home/image 3.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="books.html" class="card-title">dunyoning ishlari</a>
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
+                    >
                     <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
@@ -130,10 +132,12 @@
               <div data-content id="tort">
                 <div class="card">
                   <a href="book.html">
-                    <img src="./assets/images/book.png" alt="Avatar" />
+                    <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="books.html" class="card-title">dunyoning ishlari</a>
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
+                    >
                     <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
@@ -150,8 +154,7 @@
 
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer type="module" src="js/router.js"></script>
+    <script src="js/router.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>

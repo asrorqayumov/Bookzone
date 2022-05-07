@@ -1,11 +1,17 @@
-import configs from "../configs.js";
-import * as books from "./books.js";
+import configs from "../configs";
+import { getBooks, displayBooks } from "./books";
+import { signIn, signUp, signUpHandler } from "./auth";
 const { BASE_URL } = configs;
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("token")) {
+  }
+  if (location.pathname === "/auth.html") {
+    signUpHandler();
+  }
   if (location.pathname === "/index.html" || location.pathname === "/") {
-    books.getBooks().then((data) => {
-      books.displayBooks(data);
+    getBooks().then((data) => {
+      displayBooks(data);
     });
   }
 });

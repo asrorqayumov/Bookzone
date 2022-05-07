@@ -1,0 +1,59 @@
+.book__comment-wrapper {
+  width: 60%;
+}
+
+.about__book {
+  .about__texts-wrapper {
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+      /* identical to box height */
+      font-family: Helvetican;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    span {
+      padding-left: 10px;
+      font-style: normal;
+      font-family: Helvetican;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+      /* identical to box height */
+
+      color: #ffffff;
+    }
+  }
+
+  .about__book-title {
+    font-family: Rotterburg;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 53px;
+    padding-bottom: 13px;
+    color: #c9ac8c;
+  }
+
+  .about__author-wrapper {
+    align-items: center;
+    margin-bottom: 40px;
+
+    .about__book-text {
+      font-family: Helvetican;
+      padding-right: 20px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 16px;
+      text-align: center;
+      color: #c9ac8c;
+    }
+
+    .about__book-icon {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
