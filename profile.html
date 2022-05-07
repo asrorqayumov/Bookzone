@@ -1,10 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  class="no-js" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Profile</title>
+    <link rel="apple-touch-icon" href="icon.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body></body>
+  <body id="bg-dark">
+    <div class="nav">
+      <input type="checkbox" id="nav-check" />
+      <div class="nav-header">
+        <div class="nav-title">Badiiyat</div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links">
+        <div>
+          <a href="index.html">Bosh Sahifa</a>
+        </div>
+        <div>
+          <a href="books.html">Kitoblar</a>
+        </div>
+        <div>
+          <a href="authors.html">Avtorlar</a>
+        </div>
+      </div>
+
+      <a class="profile-logo" href="profile.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
+      </a>
+      <a class="link-auth" href="auth.html"> Sign in </a>
+    </div>
+    <header class="container container-profile my-3">
+      <div class="row profile-wrapper">
+        <div class="col-md-6 profile-about">
+          <div class="profile-about-content">
+            <div class="profil-info-left pe-3">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/219/219983.png"
+                alt=""
+              />
+              <p class="fair-text mt-1">Oltin kitobxon</p>
+              <p class="mt-1">186 ta kitob o'qigan</p>
+            </div>
+            <div class="profile-info-right pt-5">
+              <h2 class="fair-text">Farruxbek Abdullayev</h2>
+              <p>Tavallud: <span class="text-muted">February 08, 1999</span></p>
+              <p>Manzili: <span class="text-muted">Jizzax</span></p>
+              <p>
+                Bio:
+                <span class="text-muted">Graphic designer and Developer</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 profile-circle-img">
+          <img src="./assets/images/profile/profile-circle.png" alt="" />
+        </div>
+      </div>
+    </header>
+    <ul class="tab__menu profile-tab">
+      <li class="active" data-target="#bookshelf">Kitob jovoni</li>
+      <li data-target="#addbook">Kitob qo'shish</li>
+      <li data-target="#myaccaount">Sozlamalar</li>
+    </ul>
+    <div class="tab__content mb-5">
+      <div data-content id="bookshelf" class="active">
+        <div class="container profile-book-wrapper my-4">
+          <div class="row profile-book-row">
+            <div class="card">
+              <a href="book.html">
+                <img src="./assets/images/book.png" alt="Avatar" />
+              </a>
+              <div class="card-body pt-2">
+                <a href="books.html" class="card-title">dunyoning ishlari</a>
+                <div class="card-text pt-1">O'tkir Hoshimov</div>
+              </div>
+              <div class="card-footer pt-1">
+                <i class="fa-solid fa-star"></i>
+                4.1 - 3400 ta fikrlar
+              </div>
+            </div>
+            <div class="card">
+              <a href="book.html">
+                <img src="./assets/images/book.png" alt="Avatar" />
+              </a>
+              <div class="card-body pt-2">
+                <a href="books.html" class="card-title">dunyoning ishlari</a>
+                <div class="card-text pt-1">O'tkir Hoshimov</div>
+              </div>
+              <div class="card-footer pt-1">
+                <i class="fa-solid fa-star"></i>
+                4.1 - 3400 ta fikrlar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-content id="addbook">
+        <div class="container-fluid" id="addbook">
+          <div class="row">
+            <div class="col">
+              <form class="form-addbook row" action="">
+                <div class="container-upload-img col-md-6">
+                  <img class="upload-img" src="" alt="Book's image" />
+                  <label class="btn-lg" for="upload-photo">Upload cover</label>
+                  <input
+                    type="file"
+                    name="photo"
+                    id="upload-photo"
+                    onchange="previewFileAddBook()"
+                    accept="image/png, image/jpeg, image/jpg"
+                  />
+                </div>
+                <div class="container-form-addbook col-md-6">
+                  <div>
+                    <h1 class="form-title pb-2">Add book</h1>
+                    <input
+                      class="mt-1"
+                      type="text"
+                      name="title"
+                      placeholder="Title"
+                      required
+                    />
+                    <input
+                      class="mt-3"
+                      type="number"
+                      name="pages"
+                      placeholder="Pages"
+                      required
+                    />
+                    <input
+                      class="mt-3"
+                      type="text"
+                      name="year"
+                      placeholder="Year"
+                      onfocus="(this.type='date')"
+                      onblur="(this.type='text')"
+                      required
+                    />
+                    <input
+                      class="mt-3"
+                      type="number"
+                      name="price"
+                      placeholder="Price"
+                      required
+                    />
+                    <input
+                      class="mt-3"
+                      type="text"
+                      name="country"
+                      placeholder="Country"
+                      required
+                    />
+                    <input
+                      class="mt-3"
+                      type="text"
+                      name="author"
+                      placeholder="Author"
+                      required
+                    />
+                    <textarea
+                      class="mt-3"
+                      name="description"
+                      id="description"
+                      placeholder="Description"
+                    ></textarea>
+                    <button class="mt-5 btn-lg">Create</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-content id="myaccaount">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <form class="form-change-data row" action="">
+                <div class="col-md-4">
+                  <img
+                    class="profile-img"
+                    src="https://cdn-icons-png.flaticon.com/512/219/219983.png"
+                    alt=""
+                  />
+                  <label for="upload-profile-photo">
+                    <i class="fa-solid fa-camera"></i>
+                  </label>
+                  <input
+                    type="file"
+                    name="photo"
+                    id="upload-profile-photo"
+                    onchange="previewFileUploadImg()"
+                    accept="image/png, image/jpeg, image/jpg"
+                  />
+                </div>
+                <div class="col-md-8 px-3">
+                  <div class="px-5">
+                    <h2 class="pb-5">My profile</h2>
+                    <label for="firstname">First Name</label>
+                    <br />
+                    <input
+                      class="mt-4"
+                      type="text"
+                      name="firstname"
+                      placeholder="Firstname"
+                    />
+                    <br />
+                    <label class="mt-4"  for="lastname">Last Name</label> <br />
+                    <input
+                      class="mt-40"
+                      type="text"
+                      name="lastname"
+                      placeholder="Lastname"
+                    />
+                    <br />
+                    <label  class="mt-4" for="password">Password</label> <br />
+                    <input
+                      class="mt-40"
+                      type="password"
+                      name="password"
+                      placeholder="password"
+                    />
+                    <br />
+                    <div class="input-group mt-5">
+                      <div class="w-100">
+                        <label for="phone">Phone</label> <br />
+                        <input
+                          class="mt-4"
+                          type="number"
+                          name="phone"
+                          placeholder="Phone Number"
+                        />
+                      </div>
+                      <div class="w-100 ps-3">
+                        <label for="email">Email</label><br />
+                        <input
+                          class="mt-4"
+                          type="email"
+                          name="email"
+                          placeholder="Email"
+                        />
+                        <br />
+                      </div>
+                    </div>
+                    <div class="mt-3 change-data-btn">
+                      <button class="mt-5 btn-sm">Save Changes</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer type="module" src="js/router.js"></script>
+  </body>
 </html>
