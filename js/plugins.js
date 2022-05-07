@@ -64,3 +64,32 @@ targets.forEach((target) => {
     t.classList.add("active");
   });
 });
+
+function previewFileAddBook() {
+  let preview = document.querySelector(".upload-img");
+  let file = document.querySelector("input[type=file]").files[0];
+  let reader = new FileReader();
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+function previewFileUploadImg() {
+  let preview = document.querySelector(".profile-img");
+  let file = document.querySelector("#upload-profile-photo").files[0];
+  let reader = new FileReader();
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}

@@ -64,6 +64,14 @@
     width: 60px;
     border-radius: 50%;
   }
+  .link-auth{
+    display: none;
+    text-decoration: none;
+    color: #fff;
+    &:hover{
+      color: $fair;
+    }
+  }
 }
 @media (max-width: 650px) {
   .nav > .nav-btn {
