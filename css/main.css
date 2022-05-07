@@ -2041,7 +2041,9 @@
   cursor: pointer;
 }
 .btn-lg:hover {
-  transform: scale(1.05);
+  background-color: #FFF;
+  color: #152540;
+  border: solid 0.3rem #152540;
 }
 
 .btn-sm {
@@ -2059,7 +2061,9 @@
   cursor: pointer;
 }
 .btn-sm:hover {
-  transform: scale(1.05);
+  background-color: #FFF;
+  color: #152540;
+  border: solid 0.3rem #152540;
 }
 
 .btn-add {
@@ -2076,7 +2080,9 @@
   cursor: pointer;
 }
 .btn-add:hover {
-  transform: scale(1.05);
+  background-color: #FFF;
+  color: #152540;
+  border: solid 0.3rem #152540;
 }
 
 .home-btn {
@@ -2090,6 +2096,7 @@
   font-size: 16px;
   line-height: 16px;
   color: #3C2710;
+  cursor: pointer;
 }
 
 .card {
@@ -2203,7 +2210,7 @@ form.home__search {
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height */
+  border: none;
   color: rgba(255, 255, 255, 0.3);
 }
 

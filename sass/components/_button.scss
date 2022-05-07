@@ -13,7 +13,9 @@
     color: #FFFFFF;
     cursor: pointer;
     &:hover {
-        transform: scale(1.05);
+        background-color: #FFF;
+        color: #152540;
+        border:solid .3rem #152540;
        }
 };
 .btn-sm{
@@ -30,7 +32,9 @@
     color: #FFFFFF;
     cursor: pointer;
     &:hover {
-        transform: scale(1.05);
+        background-color: #FFF;
+        color: #152540;
+        border:solid .3rem #152540;
        }
 };
 .btn-add{
@@ -46,7 +50,9 @@
     color: #3C2710;
     cursor: pointer;
     &:hover {
-        transform: scale(1.05);
+        background-color: #FFF;
+        color: #152540;
+        border:solid .3rem #152540;
        }
 
 }
@@ -61,6 +67,7 @@ font-weight: 400;
 font-size: 16px;
 line-height: 16px;
 color: #3C2710;
+cursor: pointer;
 }
 
 
