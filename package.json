@@ -31,7 +31,7 @@
     ]
   },
   "scripts": {
-    "build": "parcel build ./*.html",
+    "build": "parcel build views/*.html",
     "dev": "parcel views/*.html --open",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
