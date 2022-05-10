@@ -14,14 +14,15 @@
     <link rel="manifest" href="site.webmanifest" />
     <link rel="apple-touch-icon" href="icon.png" />
     <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="sass/main.scss" />
+    <link rel="stylesheet" href="../sass/main.scss" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <meta name="theme-color" content="#fafafa" />
   </head>
 
-  <body>
+  <body id="home__page">
     <div class="nav">
       <input type="checkbox" id="nav-check" />
       <div class="nav-header">
@@ -43,15 +44,16 @@
           <a href="books.html">Kitoblar</a>
         </div>
         <div>
-          <!-- <a href="author.html">Avtorlar</a> -->
+          <a href="authors.html">Avtorlar</a>
         </div>
       </div>
 
       <a class="profile-logo" href="profile.html">
         <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
       </a>
+      <a class="link-auth" href="auth.html"> Sign in </a>
     </div>
-    <section id="home__page">
+    <section class="">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -75,60 +77,64 @@
             </ul>
 
             <div class="tab__content">
-              <div data-content id="bir" class="active">
+              <div data-content id="bir" class="active home__books">
                 <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/avloniy.png" alt="Avatar" /> -->
+                  <a href="book.html">
+                    <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="author.html" class="card-title">Abdulla Avloniy</a>
-                    <div class="card-text pt-1">1878-1934</div>
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
+                    >
+                    <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
+                    <i class="fa-solid fa-star"></i>
+                    4.1 - 3400 ta fikrlar
                   </div>
                 </div>
               </div>
               <div data-content id="ikki">
                 <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/authors/nusrat.png" alt="Avatar" /> -->
+                  <a href="book.html">
+                    <!-- <img src="./assets/images/home/image 2.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="author.html" class="card-title">Nusrat Rahmat</a>
-                    <div class="card-text pt-1">1878-1934</div>
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
+                    >
+                    <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
+                    <i class="fa-solid fa-star"></i>
+                    4.1 - 3400 ta fikrlar
                   </div>
                 </div>
               </div>
               <div data-content id="uch">
                 <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/authors/hamza.png" alt="Avatar" /> -->
+                  <a href="book.html">
+                    <!-- <img src="./assets/images/home/image 3.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="author.html" class="card-title"
-                      >Hamza Hakimzoda Niyoziy</a
+                    <a href="books.html" class="card-title"
+                      >dunyoning ishlari</a
                     >
-                    <div class="card-text pt-1">1878-1934</div>
+                    <div class="card-text pt-1">O'tkir Hoshimov</div>
                   </div>
                   <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
+                    <i class="fa-solid fa-star"></i>
+                    4.1 - 3400 ta fikrlar
                   </div>
                 </div>
               </div>
               <div data-content id="tort">
                 <div class="card">
-                  <a href="author.html">
+                  <a href="book.html">
                     <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
                   </a>
                   <div class="card-body pt-2">
-                    <a href="author.html" class="card-title"
+                    <a href="books.html" class="card-title"
                       >dunyoning ishlari</a
                     >
                     <div class="card-text pt-1">O'tkir Hoshimov</div>
@@ -145,9 +151,9 @@
       </div>
     </section>
 
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/router.js"></script>
+    <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/router.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
     <script>

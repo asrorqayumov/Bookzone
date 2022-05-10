@@ -1,17 +1,23 @@
-import configs from "../configs";
 import { getBooks, displayBooks } from "./books";
-import { signIn, signUp, signUpHandler } from "./auth";
-const { BASE_URL } = configs;
+import { signInHandler, signUpHandler } from "./auth";
+import { previewFileAddBook, profileEvent, ProfileUI } from "./profile";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
   }
   if (location.pathname === "/auth.html") {
     signUpHandler();
+    signInHandler();
   }
   if (location.pathname === "/index.html" || location.pathname === "/") {
     getBooks().then((data) => {
       displayBooks(data);
     });
+  }
+  if (location.pathname === "/profile.html") {
+    const profileUI = new ProfileUI();
+    profileUI.profileEvents()
+    // profileEvent();
+    // previewFileAddBook();
   }
 });

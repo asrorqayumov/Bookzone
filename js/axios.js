@@ -6,6 +6,11 @@ const axios = Axios.create({
 });
 axios.interceptors.request.use(
   function (config) {
+    console.log(
+      localStorage.getItem("token")
+        ? `Bearer ${localStorage.getItem("token")}`
+        : ""
+    );
     config.headers.authorization = localStorage.getItem("token")
       ? `Bearer ${localStorage.getItem("token")}`
       : "";
@@ -26,9 +31,11 @@ axios.interceptors.response.use(
     } else if (error.response?.status?.toString()?.startsWith("50")) {
       message.error("Server error", 7);
     } else if (error.response?.status === 403) {
-      message.error("You are not authorized", 7);
+      return Promise.reject(error);
     } else if (error.response?.status === 401) {
-      return store.dispatch({ type: "SIGN_OUT_SUCCESS" });
+      localStorage.clear();
+      location.assign("/auth.html");
+      return Promise.reject(error);
     }
     return Promise.reject(error);
   }

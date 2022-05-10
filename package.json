@@ -2,6 +2,7 @@
   "name": "bookzone",
   "version": "0.0.1",
   "description": "",
+  "main": "router.js",
   "keywords": [
     "book",
     "bookzone"
@@ -31,8 +32,7 @@
   },
   "scripts": {
     "build": "parcel build ./*.html",
-    "dev": "parcel ./*.html --open",
-    "sass": "sass --watch sass:css",
+    "dev": "parcel views/*.html --open",
     "start": "npm run build && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,7 +44,9 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "moment": "^2.29.3"
+    "modal-vanilla": "^0.12.0",
+    "moment": "^2.29.3",
+    "sweetalert2": "^11.4.13"
   },
   "proxy": "http://localhost:8000"
 }
