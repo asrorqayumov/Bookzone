@@ -1,78 +1,87 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Bookzone</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
+<head>
+  <meta charset="utf-8" />
+  <title>Book</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="../sass/main.scss" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <meta name="theme-color" content="#fafafa" />
-  </head>
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
 
-  <body>
-    <div class="nav">
-      <input type="checkbox" id="nav-check" />
-      <div class="nav-header">
-        <div class="nav-title">Badiiyat</div>
-      </div>
-      <div class="nav-btn">
-        <label for="nav-check">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
-      </div>
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="../sass/main.scss" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <meta name="theme-color" content="#fafafa" />
+</head>
 
-      <div class="nav-links">
-        <div>
-          <a href="index.html">Bosh Sahifa</a>
-        </div>
-        <div>
-          <a href="books.html">Kitoblar</a>
-        </div>
-        <div>
-          <a href="authors.html">Avtorlar</a>
-        </div>
-      </div>
+<body>
 
-      <a class="profile-logo" href="profile.html">
-        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
-      </a>
-      <a class="link-auth" href="auth.html"> Sign in </a>
+
+  <div class="nav">
+    <input type="checkbox" id="nav-check" />
+    <div class="nav-header">
+      <div class="nav-title">Badiiyat</div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </div>
 
-    <div class="book__body">
-      <div class="row book__main">
+    <div class="nav-links">
+      <div>
+        <a href="index.html">Bosh Sahifa</a>
+      </div>
+      <div>
+        <a href="books.html">Kitoblar</a>
+      </div>
+      <div>
+        <a href="authors.html">Avtorlar</a>
+      </div>
+    </div>
+
+    <a class="profile-logo" href="profile.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" />
+    </a>
+    <a class="link-auth" href="auth.html">
+      Sign in
+    </a>
+  </div>
+
+  <div class="book__body">
+    <div class="books-about">
+      <div class="row book__main ">
+
         <div class="col-md-4 col-xl-6 aside">
-          <div class="row book__img-wrapper">
-            <div class="book__img">
-              <!-- <img src="./img/Author-img/book-img (1).png" alt="Qo'rqma"> -->
+
+          <div class="row book__img-wrapper book-img">
+            <div class="book__img ">
+              <img src="../assets/book-details/book-img.png" alt="">
             </div>
           </div>
 
-          <div class="col-md-8 col-xl-6">
-            <div class="about__book">
-              <div class="row">
-                <h1 class="about__book-title">qo'rqma</h1>
-              </div>
+        </div>
 
-              <div class="row">
-                <p class="about__book-text">Javlon Jovliyev</p>
-                <i class="fa-solid fa-star"></i>
-              </div>
+        <div class="col-md-8 col-xl-6 about-book">
+
+          <div class="about__book">
+            <div class="row">
+              <h1 class="about__book-title">qo'rqma</h1>
+            </div>
+
+            <div class="row about__author-wrapper">
+              <p class="about__book-text">Javlon Jovliyev</p>
+              <i class="fa-solid fa-star about__book-icon">4.1</i>
+            </div>
+            <div class="about__texts-wrapper">
 
               <div class="row">
                 <p>Sahifalar soni:</p>
@@ -94,107 +103,158 @@
                 <span>Nihol nashr</span>
               </div>
 
-              <div class="row">
+              <div class="row alone__text">
                 <p>To'liq ma'lumot</p>
                 <i class="fa-solid fa-arrow-down"></i>
               </div>
+            </div>
+            <div class="row book__description-wrapper">
+              <p>Роман ўтган асрнинг йигирманчи йилларида Германияда таҳсил олган ва собиқ Совет Иттифоқи томонидан
+                шафқатсизларча қатл этилган миллат йигит-қизларининг хотирасига бағишланади.
 
-              <div class="row">
-                <p>
-                  Роман ўтган асрнинг йигирманчи йилларида Германияда таҳсил
-                  олган ва собиқ Совет Иттифоқи томонидан шафқатсизларча қатл
-                  этилган миллат йигит-қизларининг хотирасига бағишланади.
+                <br>
+                Роман воқеаларини қисқача сўзлар билан ифода этиб бўлмайди. Барчаси шу қадар тиғизки, шошириб қўяди.
+                Мажоз, образ, ифода, ўт, ҳеч кимникига ўхшамаган лиризмни ҳис қиласиз. Миллият, соф муҳаббат, кўринмас
+                ва
+                ошкор фожиалар, тарих, бугун ва эртанинг бир-бирига кавшарланган ҳалқаси, ростлик даъвосидаги ёлғонлар,
+                руҳ ва қондаги парадокслар сизни ўтмиш ва келажак куйига асир қилади, ўйлатади, йиғлатади ва аччиқ-аччиқ
+                кулдиради. Ўтган аср бошида Германияда ўқиган талабалар, улар маслаги ва фожиали қисмати бугунги ёшлар
+                мақсади билан бир тарозига тортилади.
+              </p>
+            </div>
 
-                  <br />
-                  Роман воқеаларини қисқача сўзлар билан ифода этиб бўлмайди.
-                  Барчаси шу қадар тиғизки, шошириб қўяди. Мажоз, образ, ифода,
-                  ўт, ҳеч кимникига ўхшамаган лиризмни ҳис қиласиз. Миллият, соф
-                  муҳаббат, кўринмас ва ошкор фожиалар, тарих, бугун ва эртанинг
-                  бир-бирига кавшарланган ҳалқаси, ростлик даъвосидаги ёлғонлар,
-                  руҳ ва қондаги парадокслар сизни ўтмиш ва келажак куйига асир
-                  қилади, ўйлатади, йиғлатади ва аччиқ-аччиқ кулдиради. Ўтган
-                  аср бошида Германияда ўқиган талабалар, улар маслаги ва
-                  фожиали қисмати бугунги ёшлар мақсади билан бир тарозига
-                  тортилади.
-                </p>
+            <div class="row about__format-text">
+              <h3>Mavjud formatlar</h3>
+            </div>
+
+            <div class="row about__format-wrapper">
+
+              <div class="col-2 format__icon-wrapper">
+                <i class="fa-regular fa-bookmark"></i>
+                <span>Qog'oz kitob</span>
+                <p>27 000 so'm</p>
+              </div>
+              <div class="col-2 format__icon-wrapper">
+                <i class="fa-solid fa-headphones-simple"></i>
+                <span>Audiokitob</span>
+                <p>6:23 soat</p>
               </div>
 
-              <div class="row">
-                <h3>Mavjud formatlar</h3>
+              <div class="col-2 format__icon-wrapper">
+                <i class="fa-solid fa-star"></i>
+                <span>Elektron</span>
+                <p>pdf, epub</p>
+
               </div>
 
-              <div class="row">
-                <div class="col">
-                  <i class="fa-regular fa-bookmark"></i>
-                  <span>Qog'oz kitob</span>
-                  <p>27 000 so'm</p>
-                </div>
-
-                <div class="col">
-                  <i class="fa-solid fa-headphones-simple"></i>
-                  <span>Audiokitob</span>
-                  <p>6:23 soat</p>
-                </div>
-
-                <div class="col">
-                  <i class="fa-solid fa-star"></i>
-                  <span>Elektron</span>
-                  <p>pdf, epub</p>
-                </div>
-
-                <div class="col">
-                  <button>Javonga qo'shish</button>
-                </div>
+              <div class="col-5 format__btn-wrapper">
+                <button>Javonga qo'shish </button>
               </div>
             </div>
+
+
           </div>
+
         </div>
 
-        <!-- <div class="col">Muallif haqida</div>
-      <div class="col">Kitobdan iqtiboslar</div>
-      <div class="col">Kitobxonlar taqrizi</div> -->
+      </div>
 
-        <div class="tab__wrapper">
-          <ul class="tab__menu">
-            <li class="active" data-target="#bir">Birinchi</li>
-            <li data-target="#ikki">Ikkinchi</li>
-            <li data-target="#uch">Uchinchi</li>
-            <li data-target="#tort">To'rtinchi</li>
-          </ul>
 
-          <div class="tab__content">
-            <div data-content id="bir" class="active">
-              <div>Birinchi section</div>
-            </div>
-            <div data-content id="ikki">
-              <div>Ikkinchi section</div>
-            </div>
-            <div data-content id="uch">
-              <div>Uchunchi section</div>
-            </div>
-            <div data-content id="tort">
-              <div>To'rtinchi section</div>
-            </div>
+
+      <div class="tab__wrapper ">
+
+        <ul class="tab__menu book__comment-wrapper">
+          <li data-target="#bir">Muallif haqida</li>
+          <li class="active" data-target="#ikki">Kitobdan iqtiboslar</li>
+          <li data-target="#uch">Kitobxonlar taqrizi</li>
+        </ul>
+
+        <div class="tab__content">
+
+          <div data-content id="bir">
+
           </div>
+
+          <div data-content id="ikki" class="active">
+            <div class="row">
+
+              <div class="col-5 comment__card-wrapperfirst">
+                <p class="comment__text">Inson bolasi ne kunlarni ko'rmaydi?!
+                  Har bir odam o'z g'ami bilan bo'lsa, hayotdan ko'z yumib ketganlarga umr bo'yi motam tutib o'tsa, bu
+                  moddiy olam shu kunlarga yetolarmidi?
+                  Hayot to'lqini ojizlarni qirg'oqqa irg'itib tashlaydi. Oqimga qarshi suza olganlar, to'lqinni
+                  egarlaganlargina ertangi kunga yetib keladi.</p>
+              </div>
+              <div class="col-5 comment__card-wrappersecond">
+                <p class="comment__text">Yer kurrasida chumolidek mehnat qilayotganlardan ko'ra, tuproq tagida yotganlar
+                  ko'p. Yer qatlami odam suyaklariga to'lib ketgan.</p>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div data-content id="uch">
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row comment__about-wrapper">
+        <div class="col-8">
+          <h1 class="comment__suggest">Sizga yoqishi mumkin</h1>
+        </div>
+
+        <div class="col-4">
+          <p class="comment__link">
+            Barchasini ko'rish
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row book__card-wrapper book-card-detail ">
+      <!-- =================      for card     ==================== -->
+
+      <div class="card">
+        <a href="book.html">
+          <img src="../assets/book-details/book-img.png" alt="">
+        </a>
+        <div class="card-body pt-2">
+          <a href="books.html" class="card-title">dunyoning ishlari</a>
+          <div class="card-text pt-1">O'tkir Hoshimov</div>
+        </div>
+        <div class="card-footer pt-1">
+          <i class="fa-solid fa-star"></i>
+          4.1 - 3400 ta fikrlar
         </div>
       </div>
     </div>
-    <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/router.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-    <script>
-      window.ga = function () {
-        ga.q.push(arguments);
-      };
-      ga.q = [];
-      ga.l = +new Date();
-      ga("create", "UA-XXXXX-Y", "auto");
-      ga("set", "anonymizeIp", true);
-      ga("set", "transport", "beacon");
-      ga("send", "pageview");
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async></script>
-  </body>
+  </div>
+
+
+
+  <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="../js/plugins.js"></script>
+  <script src="../js/router.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () {
+      ga.q.push(arguments);
+    };
+    ga.q = [];
+    ga.l = +new Date();
+    ga("create", "UA-XXXXX-Y", "auto");
+    ga("set", "anonymizeIp", true);
+    ga("set", "transport", "beacon");
+    ga("send", "pageview");
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
 </html>
