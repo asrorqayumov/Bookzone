@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
-    <link rel="apple-touch-icon" href="icon.png" />
     <link rel="stylesheet" href="../sass/main.scss" />
     <link
       rel="stylesheet"
@@ -70,45 +69,19 @@
           </div>
         </div>
         <div class="col-md-6 profile-circle-img">
-          <!-- <img src="./assets/images/profile/profile-circle.png" alt="" /> -->
+          <img src="../img/profile/profile-circle.png" alt="" />
         </div>
       </div>
     </header>
     <ul class="tab__menu profile-tab">
       <li class="active" data-target="#bookshelf">Kitob jovoni</li>
-      <li data-target="#addbook">Kitob qo'shish</li>
+      <li data-target="#addbook" class="addbooktab">Kitob qo'shish</li>
       <li data-target="#myaccaount">Sozlamalar</li>
     </ul>
     <div class="tab__content mb-5">
       <div data-content id="bookshelf" class="active">
         <div class="container profile-book-wrapper my-4">
           <div class="row profile-book-row">
-            <div class="card">
-              <a href="book.html">
-                <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
-              </a>
-              <div class="card-body pt-2">
-                <a href="books.html" class="card-title">dunyoning ishlari</a>
-                <div class="card-text pt-1">O'tkir Hoshimov</div>
-              </div>
-              <div class="card-footer pt-1">
-                <i class="fa-solid fa-star"></i>
-                4.1 - 3400 ta fikrlar
-              </div>
-            </div>
-            <div class="card">
-              <a href="book.html">
-                <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
-              </a>
-              <div class="card-body pt-2">
-                <a href="books.html" class="card-title">dunyoning ishlari</a>
-                <div class="card-text pt-1">O'tkir Hoshimov</div>
-              </div>
-              <div class="card-footer pt-1">
-                <i class="fa-solid fa-star"></i>
-                4.1 - 3400 ta fikrlar
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -279,6 +252,20 @@
       function previewFileAddBook() {
         let preview = document.querySelector(".upload-img");
         let file = document.querySelector("input[type=file]").files[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+          preview.src = reader.result;
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = "";
+        }
+      }
+      function previewFileUploadImg() {
+        let preview = document.querySelector(".profile-img");
+        let file = document.querySelector("#upload-profile-photo").files[0];
         let reader = new FileReader();
         reader.onloadend = function () {
           preview.src = reader.result;

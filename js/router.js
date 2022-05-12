@@ -1,10 +1,9 @@
 import { getBooks, displayBooks } from "./books";
 import { signInHandler, signUpHandler } from "./auth";
-import { previewFileAddBook, profileEvent, ProfileUI } from "./profile";
+import { updateProfileHandler, ProfileUI,getAccaountData,displayAccaountData, getShelfBooks,displayShelfBooks, checkRole, checkUser} from "./profile";
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("token")) {
-  }
+    checkUser(localStorage);
   if (location.pathname === "/auth.html") {
     signUpHandler();
     signInHandler();
@@ -15,9 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (location.pathname === "/profile.html") {
+    getAccaountData().then((data) => {
+      displayAccaountData(data);
+    })
+    getShelfBooks().then((data) => {
+      displayShelfBooks(data);
+    })
     const profileUI = new ProfileUI();
     profileUI.profileEvents()
-    // profileEvent();
-    // previewFileAddBook();
+    updateProfileHandler()
+    checkRole(localStorage)
   }
 });

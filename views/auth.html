@@ -27,7 +27,7 @@
       <div class="flip-card-3D-wrapper">
         <div id="flip-card">
           <div class="flip-card-front row">
-            <!-- <img  class="col-sm-5" src="./assets/images/auth/Sign In (1).png" alt=""> -->
+            <img class="col-sm-5" src="../img/profile/signin.png" alt="" />
             <div class="form-up col-sm-7">
               <form class="form-sign-in" action="">
                 <h1 class="form-title pb-2">Sign In</h1>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="flip-card-back row">
-            <!-- <img  class="col-sm-5" src="./assets/images/auth/Sign Up (1).png" alt=""> -->
+            <img class="col-sm-5" src="../img/profile/signup.png" alt="" />
             <div class="form-up col-sm-7">
               <form class="form-sign-up" action="">
                 <h1 class="form-title pb-2">Sign Up</h1>
@@ -119,7 +119,24 @@
                   />
                   <label for="reader">Reader</label>
                 </div>
-
+                <div class="mb-4 signup-data-field">
+                  <input
+                    type="text"
+                    name="dateofbirth"
+                    class="me-3"
+                    placeholder="Date of birth"
+                    onfocus="(this.type='date')"
+                    onblur="(this.type='text')"
+                  />
+                  <input
+                    type="text"
+                    name="dateofdeath"
+                    class="me-3"
+                    placeholder="Date of death"
+                    onfocus="(this.type='date')"
+                    onblur="(this.type='text')"
+                  />
+                </div>
                 <button class="mt-5 btn-lg">Next Steep</button>
               </form>
             </div>
@@ -128,6 +145,12 @@
       </div>
     </div>
     <script>
+      const authorInput = document.querySelector("#author");
+      const dataField = document.querySelector(".signup-data-field");
+      authorInput.addEventListener("click", () => {
+        dataField.classList.toggle("d-flex");
+      });
+
       document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById("flip-card-btn-turn-to-back").style.visibility =
           "visible";
