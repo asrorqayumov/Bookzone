@@ -1,40 +1,144 @@
-.book__comment-wrapper {
-  width: 60%;
+.book__body {
+  background: #191919;
+  // background-image: url(../../assets/images/details/body-bg.png);
+  background-position-x: 100%;
+  background-position-y: 20%;
+  background-repeat: no-repeat;
+  padding: 50px 0 0 80px;
+
 }
 
+
 .about__book {
+  
   .about__texts-wrapper {
+
     p {
       font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 20px;
+      font-weight: 100;
+      font-size: 18px;
+      line-height: 30px;
       /* identical to box height */
       font-family: Helvetican;
       color: rgba(255, 255, 255, 0.6);
+    }
+
+    .alone__text {
+      align-items: center;
+      padding: 45px 0;
+
+      p {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        padding-right: 10px;
+        color: #C9AC8C;
+      }
+
+      i {
+        color: #C4C4C4;
+
+      }
     }
 
     span {
       padding-left: 10px;
       font-style: normal;
       font-family: Helvetican;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 20px;
+      font-weight: 200;
+      font-size: 19px;
+      line-height: 30px;
       /* identical to box height */
 
-      color: #ffffff;
+
+      color: #FFFFFF;
+    }
+  }
+
+  .book__description-wrapper {
+
+    p {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 144.4%;
+      width: 85%;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .about__format-text {
+    font-style: normal;
+    padding: 45px 0 30px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: Helvetican;
+    color: #C9AC8C;
+  }
+
+  .about__format-wrapper {
+    align-items: center;
+
+    .format__icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .format__btn-wrapper {
+      display: flex;
+      justify-content: center;
+
+      button {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        padding: 15px 30px;
+        background: #C9AC8C;
+        border: none;
+        color: #3C2710;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 16px;
+      padding-right: 10px;
+      color: rgba(255, 255, 255, 0.6);
+
+    }
+
+    i {
+      color: #C4C4C4;
+      cursor: pointer;
+
+    }
+
+    span {
+      font-style: normal;
+      font-family: Helvetican;
+      font-weight: 200;
+      font-size: 16px;
+      line-height: 30px;
+
+      color: #FFFFFF;
     }
   }
 
   .about__book-title {
     font-family: Rotterburg;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 48px;
     line-height: 53px;
     padding-bottom: 13px;
-    color: #c9ac8c;
+    color: #C9AC8C;
   }
 
   .about__author-wrapper {
@@ -49,11 +153,97 @@
       font-size: 18px;
       line-height: 16px;
       text-align: center;
-      color: #c9ac8c;
+      color: #C9AC8C;
     }
 
     .about__book-icon {
       color: rgba(255, 255, 255, 0.6);
     }
+
   }
+}
+
+.tab__wrapper {
+
+  .book__comment-wrapper {
+    width: 50%;
+  }
+
+  .comment__card-wrapperfirst {
+    // width: 60%;
+    background: linear-gradient(263.94deg, #161616 0%, #1E1E1E 98.06%);
+    // background-image: url(../../assets/images/details/detail-card-bg.png);
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    border-radius: 15px;
+    margin-right: 20px;
+    padding: 0 0 0 30px;
+    display: flex;
+    align-items: center;
+    min-height: 230px;
+
+    .comment__text {
+      width: 70%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #FFFFFF;
+    }
+  }
+
+  .comment__card-wrappersecond {
+    // width: 60%;
+    background: linear-gradient(263.94deg, #161616 0%, #1E1E1E 98.06%);
+    // background-image: url(../../assets/book-details/book-cardbg.png);
+    background-repeat: no-repeat;
+    background-position-x: 110%;
+    border-radius: 15px;
+    padding: 0 0 0 30px;
+    display: flex;
+    align-items: center;
+    height: 230px;
+
+
+    .comment__text {
+      width: 70%;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: #FFFFFF;
+    }
+  }
+}
+
+.comment__about-wrapper {
+  margin: 60px 0 60px 20px;
+
+  .comment__suggest {
+    font-family: Helvetican;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    color: #C9AC8C;
+  }
+
+  .comment__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 25px;
+
+    color: #FFFFFF;
+
+    &:hover{
+      text-decoration: underline;
+      transition: .5s ease-in-out;
+      cursor: pointer;
+    }
+  }
+}
+
+.book__card-wrapper{
+  padding-left: 20px;
 }
