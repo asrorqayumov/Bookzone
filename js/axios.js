@@ -6,11 +6,6 @@ const axios = Axios.create({
 });
 axios.interceptors.request.use(
   function (config) {
-    console.log(
-      localStorage.getItem("token")
-        ? `Bearer ${localStorage.getItem("token")}`
-        : ""
-    );
     config.headers.authorization = localStorage.getItem("token")
       ? `Bearer ${localStorage.getItem("token")}`
       : "";

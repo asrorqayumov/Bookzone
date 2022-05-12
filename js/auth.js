@@ -17,10 +17,14 @@ export function signUpHandler() {
       role: form.role.value,
       firstName: form.firstname.value,
       lastName: form.lastname.value,
-      date_of_birth: new Date(),
+      date_of_birth: form.dateofbirth.value,
+      date_od_death: form.dateofdeath.value,
+
     };
-    // const formData = new FormData(form);
-    // console.log(Array.from(formData), "formData");
+    if (data.role === "reader") {
+       delete data.date_of_birth;
+       delete data.date_od_death;
+    }
     signUp(data)
       .then((response) => {
         if (response.data.success) {
@@ -59,8 +63,6 @@ export function signInHandler() {
       password: form.password.value,
     };
     console.log(data, "data");
-    // const formData = new FormData(form);
-    // console.log(Array.from(formData), "formData");
     signIn(data)
       .then((response) => {
         const { data } = response;
