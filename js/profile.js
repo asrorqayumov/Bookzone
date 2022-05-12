@@ -185,40 +185,64 @@ export function displayShelfBooks(data) {
 
 export function updateProfileHandler() {
   const formUpdateProfile = document.querySelector(".form-change-data");
-  formUpdateProfile.addEventListener("submit", (e) => {
+  formUpdateProfile.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const data = {
-      email: form.email.value,
-      password: form.password.value,
-      firstName: form.firstname.value,
-      lastName: form.lastname.value,
-      // image: form.photo.value,
-      phone: form.phone.value,
-    };
-    updateProfile(data)
-      .then((response) => {
-        console.log(response);
-        form.reset();
-        localStorage.user = JSON.stringify(response.data.payload);
-        toast({
-          title: "Success",
-          text: "Your information has updated successfully",
-          type: "success",
-          icon: "success",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        toast({
-          title: "Error",
-          text: err.response.data.error,
-          type: "error",
-          icon: "error",
-        });
+    try {
+      const form = e.target;
+      const data = {
+        email: form.email.value,
+        password: form.password.value,
+        firstName: form.firstname.value,
+        lastName: form.lastname.value,
+        phone: form.phone.value,
+      };
+      for (const key in data) {
+        if (!data[key]) {
+          delete data[key];
+        }
+      }
+      const formData = new FormData();
+      formData.append(
+        "oldImg",
+        JSON.parse(localStorage.getItem("user"))?.image?.url
+      );
+      const updateProfileData = { ...data };
+      if (form.photo.files[0]) {
+        for (const file of form.photo.files) {
+          formData.append("files", file);
+        }
+        const imageResponse = await fileUpload(formData);
+        const { _id: image } = imageResponse?.data.payload[0];
+        updateProfileData.image = image;
+      }
+      const response = await updateProfile(updateProfileData);
+      form.reset();
+      localStorage.user = JSON.stringify(response.data.payload);
+      toast({
+        title: "Success",
+        text: "Your information has updated successfully",
+        type: "success",
+        icon: "success",
       });
+    } catch (error) {
+      console.log(error.message, "error");
+      toast({
+        title: "Error",
+        text: error?.message,
+        type: "error",
+        icon: "error",
+      });
+    }
   });
 }
+export function fileUpload(file) {
+  return axios.post(`/files`, file, {
+    headers: file.headers,
+  });
+}
+// export function fileUploadHandler(file) {
+//   return fileUpload(file);
+// }
 export class ProfileUI {
   profileEvents() {
     const addBookForm = document.querySelector(".form-addbook");
@@ -229,9 +253,25 @@ export class ProfileUI {
     e.preventDefault();
     const form = e.target;
     const data = {
-      title: form.title.value,
-      description: form.description.value,
+      title: form?.title?.value,
+      description: form?.description?.value,
+      country: form?.country?.value,
+      image: form?.image?.value,
+      language: form?.language?.value,
+      link: form?.link?.value,
+      pages: form?.pages?.value,
+      year: form?.year?.value,
+      rate: form?.rate?.value,
+      price: form?.price?.value,
+      category: form?.category?.value,
+      isPublished: form?.isPublished?.value,
+      isFeatured: form?.isFeatured?.value,
     };
+    for (const key in data) {
+      if (!data[key]) {
+        delete data[key];
+      }
+    }
     console.log(data, "data");
     createBook(data)
       .then((response) => {

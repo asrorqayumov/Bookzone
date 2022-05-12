@@ -18,12 +18,16 @@ export function signUpHandler() {
       firstName: form.firstname.value,
       lastName: form.lastname.value,
       date_of_birth: form.dateofbirth.value,
-      date_od_death: form.dateofdeath.value,
-
+      date_of_death: form.dateofdeath.value,
     };
+    for (const key in data) {
+      if (!data[key]) {
+        delete data[key];
+      }
+    }
     if (data.role === "reader") {
-       delete data.date_of_birth;
-       delete data.date_od_death;
+      delete data?.date_of_birth;
+      delete data?.date_of_death;
     }
     signUp(data)
       .then((response) => {
