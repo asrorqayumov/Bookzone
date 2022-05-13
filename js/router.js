@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/index.html" || location.pathname === "/") {
     getBooks().then((data) => {
       displayBooks(data);
+      const loading = document.querySelector(".loader-container");
+        document.body.removeChild(loading);
     });
   }
   if (location.pathname === "/book.html" || location.pathname === "book") {
@@ -37,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/profile.html") {
     getAccaountData().then((data) => {
       displayAccaountData(data);
+      const loading = document.querySelector(".loader-container");
+      document.body.removeChild(loading);
     })
     getShelfBooks().then((data) => {
       displayShelfBooks(data);

@@ -121,3 +121,14 @@
     overflow-y: auto;
   }
 }
+
+.nav-auth{
+  @include flexbox(row,center,center);
+  .log-off{
+    text-decoration: none;
+    color: #fff;
+    &:hover{
+      color: $fair;
+    }
+  }
+}

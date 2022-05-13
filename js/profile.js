@@ -18,7 +18,7 @@ export function checkRole(localStorage) {
 
 export function checkUser(localStorage) {
   let user = JSON.parse(localStorage.getItem("user"));
-  let profileLogo = document.querySelector(".profile-logo");
+  let profileLogo = document.querySelector(".nav-auth");
   let linkAuth = document.querySelector(".link-auth");
   if ((user = null)) {
     profileLogo.style.display = "none";
@@ -240,9 +240,6 @@ export function fileUpload(file) {
     headers: file.headers,
   });
 }
-// export function fileUploadHandler(file) {
-//   return fileUpload(file);
-// }
 export class ProfileUI {
   profileEvents() {
     const addBookForm = document.querySelector(".form-addbook");
