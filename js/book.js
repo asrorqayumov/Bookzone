@@ -1,7 +1,79 @@
 import axios from "./axios";
+import moment from "moment";
 
 import configs from "../configs";
 const { DEFAULT_IMG } = configs;
+
+export function getComment(data) {
+  return axios.post("/books/comment", data);
+}
+
+export function addComment(){
+  const formComment = document.querySelector(".form-comment");
+  formComment.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+      const form = e.target;
+      const data = {
+        text: form.textarea.value,
+        bookId: id
+      };
+      for (const key in data) {
+        if (!data[key]) {
+          delete data[key];
+        }
+      } 
+      console.log(data, "data");
+      getComment(data)
+      .then((response) => {
+        toast({
+          title: "Success",
+          text: "Book added successfully",
+          type: "success",
+          icon: "success",
+        });
+      })
+      
+    .catch((err) => {
+      console.log(err, "err");
+      toast({
+        title: "Error",
+        text: err.response.data.error,
+        type: "error",
+        icon: "error",
+      });
+    });
+  });
+}
+
+// add book shelf
+
+export async function AddFavourite(data) {
+    return axios.post("/users/shelf", data);
+}
+
+export function AddFavouriteHandler() {
+  const favBtn = document.querySelector(".favbtn");
+  favBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const data = {
+      bookId: id
+    }
+
+    AddFavourite(data)
+    .then((response) =>{
+      const { data } = response;
+      const favoriteBtn = e.target.closest(".favbtn").dataset.favlist;
+      const favorite = favoriteBtn == "true" ? true : false;
+      AddFavourite().then((data) => {
+        if (data.success) {
+          e.target.closest(".favbtn").dataset.favlist = !favorite;
+        }
+      });
+    })
+
+  });
+}
 
 
 export async function getBookById(_id) {
@@ -17,7 +89,7 @@ export function displayBookById(data) {
   const homeBooksDom = document.querySelector(".books-about");
   let contentDom = "";
   data?.docs.forEach((book) => {
-    const { title,description, author, comments, image, rate, price, year, pages, _id, category } = book;
+    const { title, description, author, comments, image, rate, price, year, pages, _id, category } = book;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
     contentDom = `
@@ -54,7 +126,7 @@ export function displayBookById(data) {
     
           <div class="row">
             <p>Chop etilgan:</p>
-            <span>${year}</span>
+            <span>${moment(year).format("L")}</span>
           </div>
     
           <div class="row">
@@ -112,57 +184,6 @@ export function displayBookById(data) {
     </div>
     
     </div>
-
-    <div class="tab__wrapper ">
-
-        <ul class="tab__menu book__comment-wrapper">
-          <li data-target="#bir">Muallif haqida</li>
-          <li class="active" data-target="#ikki">Kitobdan iqtiboslar</li>
-          <li data-target="#uch">Kitobxonlar taqrizi</li>
-        </ul>
-
-        <div class="tab__content">
-
-          <div data-content id="bir">
-
-          </div>
-
-          <div data-content id="ikki" class="active">
-            <div class="row">
-
-              <div class="col-5 comment__card-wrapperfirst">
-                <p class="comment__text">${comments}</p>
-              </div>
-              <div class="col-5 comment__card-wrappersecond">
-                <p class="comment__text">${comments}</p>
-              </div>
-
-
-            </div>
-
-          </div>
-
-          <div data-content id="uch">
-
-          </div>
-
-        </div>
-      </div>
-
-      <div class="row comment__about-wrapper">
-        <div class="col-8">
-          <h1 class="comment__suggest">Sizga yoqishi mumkin</h1>
-        </div>
-
-        <div class="col-4">
-          <p class="comment__link">
-            Barchasini ko'rish
-          </p>
-        </div>
-      </div>
-      </div>
-
-
     `;
   });
   homeBooksDom.innerHTML = contentDom;
