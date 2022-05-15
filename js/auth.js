@@ -66,7 +66,6 @@ export function signInHandler() {
       email: form.email.value,
       password: form.password.value,
     };
-    console.log(data, "data");
     signIn(data)
       .then((response) => {
         const { data } = response;

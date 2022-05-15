@@ -12,7 +12,6 @@ const { DEFAULT_IMG } = configs;
 export async function getAuthor() {
   try {
     const response = await axios("/authors");
-    console.log(response, "response");
     return response?.data;
   } catch (error) {
     throw new Error(error.message);

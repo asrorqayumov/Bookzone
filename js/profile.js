@@ -3,7 +3,21 @@ import toast from "./toastify";
 import axios from "./axios";
 import configs from "../configs";
 import moment from "moment";
+import { countries } from "country-list-json";
 const { DEFAULT_IMG } = configs;
+
+export function displayCountries() {
+  let countryList = document.querySelectorAll(".countries-list");
+  let html = "";
+  countries.forEach((country) => {
+    html += `<option value="${country.name.toLocaleLowerCase()}">${
+      country.name
+    }</option>`;
+  });
+  countryList.forEach((country) => {
+    country.innerHTML = html;
+  });
+}
 
 export function checkRole(localStorage) {
   let user = JSON.parse(localStorage.getItem("user"));
@@ -11,8 +25,12 @@ export function checkRole(localStorage) {
   if (role === "reader") {
     let addbook = document.getElementById("addbook");
     let addbooktab = document.querySelector(".addbooktab");
+    let mybook = document.getElementById("mybooks");
+    let mybooktab = document.querySelector(".mybookstab");
     addbook.style.display = "none";
     addbooktab.style.display = "none";
+    mybook.style.display = "none";
+    mybooktab.style.display = "none";
   }
 }
 
@@ -44,8 +62,30 @@ export async function getShelfBooks() {
   }
 }
 
+export async function getMyBooks() {
+  try {
+    const res = await axios("/books/my-books");
+    return res?.data?.payload;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function getBooksById(id) {
+  try {
+    const res = await axios(`/books/${id}`);
+    return res?.data?.payload;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 export function updateProfile(data) {
   return axios.patch("/users", data);
+}
+
+export function updateBook(id, data) {
+  return axios.patch(`/books/${id}`, data);
 }
 
 export function displayAccaountData(data) {
@@ -183,6 +223,107 @@ export function displayShelfBooks(data) {
   homeBooksDom.innerHTML = contentDom;
 }
 
+export function displayMyBooks(data) {
+  const homeBooksDom = document.querySelector(".profile-mybooks-row");
+  let contentDom = "";
+  data?.docs?.forEach((book) => {
+    const { title, author, comments, _id, imageLink, rate } = book;
+    const { firstName, lastName } = author;
+    const imgUrl = imageLink?.url ? imageLink.url : DEFAULT_IMG;
+    contentDom += `
+        <div class="card" data-id= ${_id}>
+        <a href="book.html">
+          <img src="${imgUrl}" alt="${title}" />
+        </a>
+        <div class="card-body pt-2">
+          <a href="books.html" class="card-title">${title}</a>
+          <div class="card-text pt-1">${firstName} ${lastName}</div>
+        </div>
+        <div class="card-footer pt-1">
+          <i class="fa-solid fa-star"></i>
+          ${rate} - ${comments?.length ? comments.length : "0"} ta fikrlar
+        </div>
+        <button class="update-btn">Update Book</button>
+      </div>`;
+  });
+  let modalContent = `
+  <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form class="form-updatebook row" action="">
+      <div class="container-upload-img col-md-6">
+        <img class="upload-bookimg" src="" alt="Book's image" />
+        <label class="btn-lg" for="up-book-img">Upload cover</label>
+        <input
+          type="file"
+          name="photo"
+          id="up-book-img"
+          onchange="previewFileUpBook()"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+      </div>
+      <div class="container-form-updatebook col-md-6">
+        <div>
+          <h1 class="form-title pb-2">Update book</h1>
+          <input
+            class="mt-1"
+            type="text"
+            name="title"
+            placeholder="Title"
+          />
+          <input
+            class="mt-3"
+            type="number"
+            name="pages"
+            placeholder="Pages"
+          />
+          <input
+            class="mt-3"
+            type="text"
+            name="year"
+            placeholder="Year"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+          />
+          <input
+            class="mt-3"
+            type="number"
+            name="price"
+            placeholder="Price"
+          />
+          <select class="mt-3" name="category">
+            <option class="text-muted category-option" value="">
+              Category
+            </option>
+            <option value="classic ">Classic</option>
+            <option value="biography  ">Biography</option>
+            <option value="science ">Science</option>
+          </select>
+          <select class="mt-3 countries-list" name="country">
+            <option class="country-item" value="">Country</option>
+          </select>
+          <input
+            class="mt-3"
+            type="text"
+            name="language"
+            placeholder="Language"
+          />
+          <textarea
+            class="mt-3"
+            name="description"
+            id="description"
+            placeholder="Description"
+          ></textarea>
+          <button class="mt-5 btn-sm updatebook-submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+  `;
+  homeBooksDom.innerHTML = modalContent + contentDom;
+}
+
 export function updateProfileHandler() {
   const formUpdateProfile = document.querySelector(".form-change-data");
   formUpdateProfile.addEventListener("submit", async (e) => {
@@ -223,9 +364,10 @@ export function updateProfileHandler() {
         text: "Your information has updated successfully",
         type: "success",
         icon: "success",
+      }).then(() => {
+        window.location.reload();
       });
     } catch (error) {
-      console.log(error.message, "error");
       toast({
         title: "Error",
         text: error?.message,
@@ -235,11 +377,75 @@ export function updateProfileHandler() {
     }
   });
 }
+
+export function updateBookHandler() {
+  const formUpdateBook = document.querySelector(".form-updatebook");
+  let updateBtn = document.querySelectorAll(".update-btn");
+  updateBtn.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const bookId = e.target.parentElement.dataset.id;
+      getBooksById(bookId).then((book) => { console.log(book)});
+      formUpdateBook.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        try {
+          const form = e.target;
+          const data = {
+            title: form.title.value,
+            pages: form.pages.value,
+            year: form.year.value,
+            price: form.price.value,
+            category: form.category.value,
+            country: form.country.value,
+            language: form.language.value,
+            description: form.description.value,
+          };
+          for (const key in data) {
+            if (!data[key]) {
+              delete data[key];
+            }
+          }
+          const formData = new FormData();
+          formData.append(
+            "oldImg",
+              getBooksById(bookId).then((book) => book.imageLink)
+          );
+          const updateBookData = { ...data };
+          if (form.photo.files[0]) {
+            for (const file of form.photo.files) {
+              formData.append("files", file);
+            }
+            const imageResponse = await fileUpload(formData);
+            const { _id: image } = imageResponse?.data.payload[0];
+            updateBookData.image = image;
+          }
+          const response = await updateBook(bookId,updateBookData);
+          form.reset();
+          toast({
+            title: "Success",
+            text: "Your information has updated successfully",
+            type: "success",
+            icon: "success",
+          });
+        } catch (error) {
+          console.log(error);
+          toast({
+            title: "Error",
+            text: error?.response?.data,
+            type: "error",
+            icon: "error",
+          });
+        }
+      });
+    });
+  });
+}
+
 export function fileUpload(file) {
   return axios.post(`/files`, file, {
     headers: file.headers,
   });
 }
+
 export class ProfileUI {
   profileEvents() {
     const addBookForm = document.querySelector(".form-addbook");
@@ -253,7 +459,6 @@ export class ProfileUI {
       title: form?.title?.value,
       description: form?.description?.value,
       country: form?.country?.value,
-      image: form?.image?.value,
       language: form?.language?.value,
       link: form?.link?.value,
       pages: form?.pages?.value,
@@ -269,7 +474,25 @@ export class ProfileUI {
         delete data[key];
       }
     }
-    console.log(data, "data");
+    for (const key in data) {
+      if (typeof data[key] === "string") {
+        data[key] = data[key].trim();
+      }
+    }
+
+    const formData = new FormData();
+    if (form.photo.files[0]) {
+      for (const file of form.photo.files) {
+        console.log(file);
+        formData.append("file", file);
+      }
+    }
+
+    fileUpload(formData).then((response) => {
+      const { _id: image } = response?.data.payload[0];
+      data.image = image;
+    });
+
     createBook(data)
       .then((response) => {
         toast({
@@ -280,7 +503,6 @@ export class ProfileUI {
         });
       })
       .catch((err) => {
-        console.log(err, "err");
         toast({
           title: "Error",
           text: err.response.data.error,
