@@ -148,7 +148,7 @@
               </div>
 
               <div class="col-5 format__btn-wrapper">
-                <button>Javonga qo'shish </button>
+                <button class="favbtn" data-favlist="false">Javonga qo'shish </button>
               </div>
             </div>
 
@@ -158,63 +158,68 @@
         </div>
 
       </div>
-
-
-
-      <div class="tab__wrapper ">
-
-        <ul class="tab__menu book__comment-wrapper">
-          <li data-target="#bir">Muallif haqida</li>
-          <li class="active" data-target="#ikki">Kitobdan iqtiboslar</li>
-          <li data-target="#uch">Kitobxonlar taqrizi</li>
-        </ul>
-
-        <div class="tab__content">
-
-          <div data-content id="bir">
-
-          </div>
-
-          <div data-content id="ikki" class="active">
-            <div class="row">
-
-              <div class="col-5 comment__card-wrapperfirst">
-                <p class="comment__text">Inson bolasi ne kunlarni ko'rmaydi?!
-                  Har bir odam o'z g'ami bilan bo'lsa, hayotdan ko'z yumib ketganlarga umr bo'yi motam tutib o'tsa, bu
-                  moddiy olam shu kunlarga yetolarmidi?
-                  Hayot to'lqini ojizlarni qirg'oqqa irg'itib tashlaydi. Oqimga qarshi suza olganlar, to'lqinni
-                  egarlaganlargina ertangi kunga yetib keladi.</p>
-              </div>
-              <div class="col-5 comment__card-wrappersecond">
-                <p class="comment__text">Yer kurrasida chumolidek mehnat qilayotganlardan ko'ra, tuproq tagida yotganlar
-                  ko'p. Yer qatlami odam suyaklariga to'lib ketgan.</p>
-              </div>
-
-
-            </div>
-
-          </div>
-
-          <div data-content id="uch">
-
-          </div>
-
-        </div>
-      </div>
-
-      <div class="row comment__about-wrapper">
-        <div class="col-8">
-          <h1 class="comment__suggest">Sizga yoqishi mumkin</h1>
-        </div>
-
-        <div class="col-4">
-          <p class="comment__link">
-            Barchasini ko'rish
-          </p>
-        </div>
-      </div>
-
     </div>
+
+    <div class="tab__wrapper ">
+
+      <ul class="tab__menu book__comment-wrapper">
+        <li data-target="#bir">Muallif haqida</li>
+        <li class="active" data-target="#ikki">Kitobdan iqtiboslar</li>
+        <li data-target="#uch">Comment qoldirish</li>
+      </ul>
+
+      <div class="tab__content">
+
+        <div data-content id="bir">
+
+        </div>
+
+        <div data-content id="ikki" class="active">
+          <div class="row">
+
+            <div class="col-5 comment__card-wrapperfirst">
+              <p class="comment__text">Inson bolasi ne kunlarni ko'rmaydi?!
+                Har bir odam o'z g'ami bilan bo'lsa, hayotdan ko'z yumib ketganlarga umr bo'yi motam tutib o'tsa, bu
+                moddiy olam shu kunlarga yetolarmidi?
+                Hayot to'lqini ojizlarni qirg'oqqa irg'itib tashlaydi. Oqimga qarshi suza olganlar, to'lqinni
+                egarlaganlargina ertangi kunga yetib keladi.</p>
+            </div>
+            <div class="col-5 comment__card-wrappersecond">
+              <p class="comment__text">Yer kurrasida chumolidek mehnat qilayotganlardan ko'ra, tuproq tagida yotganlar
+                ko'p. Yer qatlami odam suyaklariga to'lib ketgan.</p>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <div data-content id="uch">
+          <form class="row form-comment" action="">
+            <div class="container-form-comment col-md-6">
+              <div>
+                <textarea rows="5" cols="50" class="mt-3" name="comment" id="comment" placeholder="Comment"></textarea>
+                <button class="ms-5 btn-comment">Create</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row comment__about-wrapper">
+      <div class="col-8">
+        <h1 class="comment__suggest">Sizga yoqishi mumkin</h1>
+      </div>
+
+      <div class="col-4">
+        <p class="comment__link">
+          Barchasini ko'rish
+        </p>
+      </div>
+    </div>
+
 
     <div class="row book__card-wrapper book-card-detail ">
       <!-- =================      for card     ==================== -->

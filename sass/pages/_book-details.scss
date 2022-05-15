@@ -247,3 +247,28 @@
 .book__card-wrapper{
   padding-left: 20px;
 }
+
+.container-form-comment{
+  div{
+    display: flex;
+    align-items: center;
+
+    textarea{
+      background-color: #191919;
+      padding: 1rem;
+      color: #FFFFFF;
+    }
+    .btn-comment{
+      background-color: #191919;
+      border: 1px solid #474747;
+      border-radius: 5px;
+      padding: 1rem 2rem;
+      color: #FFFFFF;
+
+      &:hover{
+        background-color: #474747;
+        color: #FFFFFF;
+      }
+    }
+  }
+}

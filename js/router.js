@@ -1,5 +1,5 @@
 import { getBooks, displayBooks } from "./books";
-import { getBookById,displayBookById,displayBookCard } from "./book";
+import { getBookById,displayBookById,displayBookCard,AddFavourite } from "./book";
 import { displayAuthorBook, getAuthor, displayAboutAuthor, displayAuthorName} from "./author";
 import { signInHandler, signUpHandler } from "./auth";
 import { updateProfileHandler, ProfileUI,getAccaountData,displayAccaountData, getShelfBooks,displayShelfBooks, checkRole, checkUser} from "./profile";
@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     getBooks().then((data) => {
       displayBookCard(data);
     });
+    AddFavourite().then((data)=>{
+      
+    })
   } 
 
   if (location.pathname === "/author.html" || location.pathname === "author") {
