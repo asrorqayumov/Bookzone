@@ -1,5 +1,4 @@
-#addbook {
-  .form-addbook {
+  .form-addbook , .form-updatebook{
     .container-upload-img {
       background:$darkbg;
       min-height: 100vh;
@@ -17,13 +16,13 @@
         padding: 5px 20px 5px 20px;
         width: 60% !important;
       }
-      #upload-photo {
+      #up-book-img, #addbook-photo {
         opacity: 0;
         position: absolute;
         z-index: -1;
       }
     }
-    .container-form-addbook{
+    .container-form-addbook, .container-form-updatebook{
         @include flexbox(column, center, center);
         div{
             max-width: 500px;
@@ -34,7 +33,7 @@
                 font-size: 36px;
                 line-height: 51px;
             }
-            input,textarea {
+            input,textarea, select{
               width: 100%;
               padding: 15px;
               border: none;
@@ -49,4 +48,8 @@
         }
     }
   }
+
+
+.category-option{
+  display: none;
 }
