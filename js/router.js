@@ -1,5 +1,5 @@
 import { getBooks, displayBooks } from "./books";
-import { getBookById,displayBookById,displayBookCard,AddFavourite } from "./book";
+import { getBookById,displayBookById,displayBookCard,addFavourite,addFavouriteHandler, addComment } from "./book";
 import { displayAuthorBook, getAuthor, displayAboutAuthor, displayAuthorName} from "./author";
 import { signInHandler, signUpHandler } from "./auth";
 import {
@@ -35,10 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     getBooks().then((data) => {
       displayBookCard(data);
+      addFavouriteHandler();
+      addComment();
     });
-    AddFavourite().then((data)=>{
-      
-    })
   } 
 
   if (location.pathname === "/author.html" || location.pathname === "author") {
