@@ -78,7 +78,6 @@ export function AddFavouriteHandler() {
 export async function getBookById(_id) {
   try {
     const response = await axios(`/books`);
-    console.log(response);
     return response?.data.payload;
   } catch (error) {
     throw new Error(error.message);

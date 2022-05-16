@@ -12,7 +12,6 @@ export async function getBooks() {
 }
 export function displayBooks(data) {
   const homeBooksDom = document.querySelector(".home__books");
-  console.log(homeBooksDom, "dfghjkl");
   let contentDom = "";
   data?.docs.forEach((book) => {
     const { title, author, comments, image, rate } = book;
