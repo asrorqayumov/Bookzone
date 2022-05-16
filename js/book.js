@@ -1,8 +1,9 @@
 import axios from "./axios";
 import moment from "moment";
-
+import toast from "./toastify";
 import configs from "../configs";
 const { DEFAULT_IMG } = configs;
+
 
 export function getComment(data) {
   return axios.post("/books/comment", data);
@@ -12,23 +13,19 @@ export function addComment(){
   const formComment = document.querySelector(".form-comment");
   formComment.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
       const form = e.target;
+      let id = form.dataset.id;
       const data = {
-        text: form.textarea.value,
-        bookId: id
+        text: form.comment.value,
+        book: id
       };
-      for (const key in data) {
-        if (!data[key]) {
-          delete data[key];
-        }
-      } 
+     
       console.log(data, "data");
       getComment(data)
       .then((response) => {
         toast({
           title: "Success",
-          text: "Book added successfully",
+          text: "Comment added successfully",
           type: "success",
           icon: "success",
         });
@@ -38,7 +35,7 @@ export function addComment(){
       console.log(err, "err");
       toast({
         title: "Error",
-        text: err.response.data.error,
+        text: err?.response.data.error.message,
         type: "error",
         icon: "error",
       });
@@ -48,28 +45,26 @@ export function addComment(){
 
 // add book shelf
 
-export async function AddFavourite(data) {
+export async function addFavourite(data) {
     return axios.post("/users/shelf", data);
 }
 
-export function AddFavouriteHandler() {
+export function addFavouriteHandler() {
   const favBtn = document.querySelector(".favbtn");
   favBtn.addEventListener("click", (e) => {
+    let id = e.target.dataset.id;
+    console.log(id, "id");
     e.preventDefault();
     const data = {
       bookId: id
     }
 
-    AddFavourite(data)
+    addFavourite(data)
     .then((response) =>{
+      console.log(response, "response");
       const { data } = response;
       const favoriteBtn = e.target.closest(".favbtn").dataset.favlist;
       const favorite = favoriteBtn == "true" ? true : false;
-      AddFavourite().then((data) => {
-        if (data.success) {
-          e.target.closest(".favbtn").dataset.favlist = !favorite;
-        }
-      });
     })
   });
 }
@@ -86,7 +81,9 @@ export async function getBookById(_id) {
 
 export function displayBookById(data) {
   const homeBooksDom = document.querySelector(".books-about");
+  let formWrapper = document.querySelector(".form-comment-wrapper");
   let contentDom = "";
+  let formHtml = "";
   data?.docs.forEach((book) => {
     const { title, description, author, comments, image, rate, price, year, pages, _id, category } = book;
     const { firstName, lastName } = author;
@@ -173,7 +170,7 @@ export function displayBookById(data) {
           </div>
     
           <div class="col-5 format__btn-wrapper">
-            <button>Javonga qo'shish </button>
+          <button class="favbtn"  data-id="${_id}" data-favlist="false">Javonga qo'shish </button>
           </div>
         </div>
     
@@ -184,8 +181,19 @@ export function displayBookById(data) {
     
     </div>
     `;
+    formHtml = `
+    <form class="row form-comment" data-id="${_id}" action="">
+    <div class="container-form-comment col-md-6 ">
+      <div>
+        <textarea rows="5" cols="50" class="mt-3" name="comment" id="comment" placeholder="Comment"></textarea>
+        <button class="ms-5 btn-comment">Create</button>
+      </div>
+    </div>
+  </form>
+    `
   });
   homeBooksDom.innerHTML = contentDom;
+  formWrapper.innerHTML = formHtml;
 }
 
 export function displayBookCard(data) {

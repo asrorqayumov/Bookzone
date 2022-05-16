@@ -201,17 +201,18 @@ export function displayAccaountData(data) {
 export function displayShelfBooks(data) {
   const homeBooksDom = document.querySelector(".profile-book-row");
   let contentDom = "";
-  data?.shelf?.forEach((book) => {
+  data?.shelf?.forEach((book = {}) => {
+  
     const { title, author, comments, imageLink, rate } = book;
     const { firstName, lastName } = author;
     const imgUrl = imageLink?.url ? imageLink.url : DEFAULT_IMG;
     contentDom += `
         <div class="card">
         <a href="book.html">
-          <img src="${imgUrl}" alt="${title}" />
+          <img src="${imgUrl}" alt="${title}"/>
         </a>
         <div class="card-body pt-2">
-          <a href="books.html" class="card-title">${title}</a>
+          <a href="books.html" class="card-title"></a>
           <div class="card-text pt-1">${firstName} ${lastName}</div>
         </div>
         <div class="card-footer pt-1">
@@ -489,6 +490,7 @@ export class ProfileUI {
     }
 
     fileUpload(formData).then((response) => {
+      console.log(response);
       const { _id: image } = response?.data.payload[0];
       data.image = image;
     });
