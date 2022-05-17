@@ -275,14 +275,14 @@ export function updateBookHandler() {
         try {
           const form = e.target;
           const data = {
-            title: form.title.value,
-            pages: form.pages.value,
-            year: form.year.value,
-            price: form.price.value,
-            category: form.category.value,
-            country: form.country.value,
-            language: form.language.value,
-            description: form.description.value,
+            title: form.title.value.trim(),
+            pages: form.pages.value.trim(),
+            year: form.year.value.trim(),
+            price: form.price.value.trim(),
+            category: form.category.value.trim(),
+            country: form.country.value.trim(),
+            language: form.language.value.trim(),
+            description: form.description.value.trim(),
           };
           for (const key in data) {
             if (!data[key]) {
@@ -460,3 +460,4 @@ export class ProfileUI {
       });
   }
 }
+

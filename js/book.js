@@ -100,7 +100,7 @@ export function addFavouriteHandler() {
 
 export async function getBookById(_id) {
   try {
-    const response = await axios(`/books`);
+    const response = await axios(`/books/${_id}`);
     console.log(response);
     return response?.data.payload;
   } catch (error) {
@@ -113,8 +113,8 @@ export function displayBookById(data) {
   let formWrapper = document.querySelector(".form-comment-wrapper");
   let contentDom = "";
   let formHtml = "";
-  data?.docs.forEach((book) => {
-    const { title, description, author, comments, image, rate, price, year, pages, _id, category } = book;
+  console.log(data, "data");
+    const { title, description, author, comments, image, rate, price, year, pages, _id, category } = data?.book;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
     contentDom = `
@@ -220,7 +220,6 @@ export function displayBookById(data) {
     </div>
   </form>
     `
-  });
   homeBooksDom.innerHTML = contentDom;
   formWrapper.innerHTML = formHtml;
 }

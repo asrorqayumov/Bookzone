@@ -14,11 +14,11 @@ export function displayBooks(data) {
   const homeBooksDom = document.querySelector(".home__books");
   let contentDom = "";
   data?.docs.forEach((book) => {
-    const { title, author, comments, image, rate } = book;
+    const { title, author, comments, image, rate, _id } = book;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
     contentDom += `
-        <div class="card">
+        <div class="card" data-id=${_id}>
         <a href="book.html">
           <img src="${imgUrl}" alt="${title}" />
         </a>
@@ -35,8 +35,18 @@ export function displayBooks(data) {
   homeBooksDom.innerHTML = contentDom;
 }
 
-
-
+export function bookEvent() {
+  const bookNodeList = document.querySelectorAll(".home__books .card");
+  bookNodeList.forEach((bookDom) => {
+    bookDom.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = e.target.closest("[data-id]").dataset.id;
+      console.log(bookNodeList, id);
+      history.pushState({ id }, null, `/book.html`);
+      location.reload();
+    });
+  });
+}
 
 export function createBook(data) {
   return axios.post("/books", data);

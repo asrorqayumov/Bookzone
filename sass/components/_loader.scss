@@ -45,12 +45,12 @@ $speed: 1s;
     }
     div:nth-child(2):after {
       animation: ring2 $speed linear infinite;
-      animation-delay: ($speed/-2);
+      animation-delay: calc($speed/-2);
       transform: rotateX($X) rotateY(60deg) rotate(0deg);
     }
     div:nth-child(3):after {
       animation: ring3 $speed linear infinite;
-      animation-delay: ($speed/-3);
+      animation-delay: calc($speed / -3);
       transform: rotateX($X) rotateY(-60deg) rotate(0deg);
     }
 
