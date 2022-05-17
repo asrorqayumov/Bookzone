@@ -6,6 +6,14 @@ import moment from "moment";
 import { countries } from "country-list-json";
 const { DEFAULT_IMG } = configs;
 
+export function getAvatar(data) {
+  let { user } = data;
+  let { image } = user;
+  const imgUrl = image?.url ? image.url : DEFAULT_IMG;
+  let img = document.querySelector(".profile-img");
+  img.src = imgUrl;
+}
+
 export function displayCountries() {
   let countryList = document.querySelectorAll(".countries-list");
   let html = "";
@@ -80,12 +88,16 @@ export async function getBooksById(id) {
   }
 }
 
-export function updateProfile(data) {
-  return axios.patch("/users", data);
-}
-
 export function updateBook(id, data) {
   return axios.patch(`/books/${id}`, data);
+}
+
+export function deleteBookFromShelf(id, ) {
+  return axios.delete(`/users/shelf/${id}`);
+}
+
+export function deleteBook(id, ) {
+  return axios.delete(`/books/${id}`);
 }
 
 export function displayAccaountData(data) {
@@ -119,107 +131,30 @@ export function displayAccaountData(data) {
               </div> `;
 
   profilWrapper.innerHTML = html;
-
-  const formChangeData = document.querySelector(".form-change-data");
-  let html2 = "";
-  html2 += `
-  <div class="col-md-4">
-  <img
-    class="profile-img"
-    src="${imgUrl}"
-    alt=""
-  />
-  <label for="upload-profile-photo">
-    <i class="fa-solid fa-camera"></i>
-  </label>
-  <input
-    type="file"
-    name="photo"
-    id="upload-profile-photo"
-    onchange="previewFileUploadImg()"
-    accept="image/png, image/jpeg, image/jpg"
-  />
-</div>
-<div class="col-md-8 px-3">
-  <div class="px-5">
-    <h2 class="pb-5">My profile</h2>
-    <label for="firstname">First Name</label>
-    <br />
-    <input
-      class="mt-4"
-      type="text"
-      name="firstname"
-      placeholder="${firstName}"
-    />
-    <br />
-    <label class="mt-4" for="lastname">Last Name</label> <br />
-    <input
-      class="mt-40"
-      type="text"
-      name="lastname"
-      placeholder="${lastName}"
-    />
-    <br />
-    <label class="mt-4" for="password">Password</label> <br />
-    <input
-      class="mt-40"
-      type="password"
-      name="password"
-      placeholder="password"
-    />
-    <br />
-    <div class="input-group mt-5">
-      <div class="w-100">
-        <label for="phone">Phone</label> <br />
-        <input
-          class="mt-4"
-          type="number"
-          name="phone"
-          placeholder="${phone}"
-        />
-      </div>
-      <div class="w-100 ps-3">
-        <label for="email">Email</label><br />
-        <input
-          class="mt-4"
-          type="email"
-          name="email"
-          placeholder="${email}"
-        />
-        <br />
-      </div>
-    </div>
-    <div class="mt-3 change-data-btn">
-      <button class="mt-5 btn-sm">Save Changes</button>
-    </div>
-  </div>
-</div>
-  `;
-  formChangeData.innerHTML = html2;
 }
 
 export function displayShelfBooks(data) {
   const homeBooksDom = document.querySelector(".profile-book-row");
   let contentDom = "";
   data?.shelf?.forEach((book = {}) => {
-  
-    const { title, author, comments, imageLink, rate } = book;
+    const { title, author, comments, _id, imageLink, rate } = book;
     const { firstName, lastName } = author;
     const imgUrl = imageLink?.url ? imageLink.url : DEFAULT_IMG;
     contentDom += `
-        <div class="card">
-        <a href="book.html">
-          <img src="${imgUrl}" alt="${title}"/>
-        </a>
-        <div class="card-body pt-2">
-          <a href="books.html" class="card-title"></a>
-          <div class="card-text pt-1">${firstName} ${lastName}</div>
-        </div>
-        <div class="card-footer pt-1">
-          <i class="fa-solid fa-star"></i>
-          ${rate} - ${comments?.length ? comments.length : "0"} ta fikrlar
-        </div>
-      </div>`;
+    <div class="card" data-id= ${_id}>
+    <a href="book.html">
+      <img src="${imgUrl}" alt="${title}" />
+    </a>
+    <div class="card-body pt-2">
+      <a href="books.html" class="card-title">${title}</a>
+      <div class="card-text pt-1">${firstName} ${lastName}</div>
+    </div>
+    <div class="card-footer pt-1">
+      <i class="fa-solid fa-star"></i>
+      ${rate} - ${comments?.length ? comments.length : "0"} ta fikrlar
+    </div>
+    <button class="remove-btn">Remove Book</button>
+  </div>`;
   });
   homeBooksDom.innerHTML = contentDom;
 }
@@ -244,6 +179,7 @@ export function displayMyBooks(data) {
           <i class="fa-solid fa-star"></i>
           ${rate} - ${comments?.length ? comments.length : "0"} ta fikrlar
         </div>
+        <button class="delete-book-btn">Delete Book</button>
         <button class="update-btn">Update Book</button>
       </div>`;
   });
@@ -325,67 +261,15 @@ export function displayMyBooks(data) {
   homeBooksDom.innerHTML = modalContent + contentDom;
 }
 
-export function updateProfileHandler() {
-  const formUpdateProfile = document.querySelector(".form-change-data");
-  formUpdateProfile.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    try {
-      const form = e.target;
-      const data = {
-        email: form.email.value,
-        password: form.password.value,
-        firstName: form.firstname.value,
-        lastName: form.lastname.value,
-        phone: form.phone.value,
-      };
-      for (const key in data) {
-        if (!data[key]) {
-          delete data[key];
-        }
-      }
-      const formData = new FormData();
-      formData.append(
-        "oldImg",
-        JSON.parse(localStorage.getItem("user"))?.image?.url
-      );
-      const updateProfileData = { ...data };
-      if (form.photo.files[0]) {
-        for (const file of form.photo.files) {
-          formData.append("files", file);
-        }
-        const imageResponse = await fileUpload(formData);
-        const { _id: image } = imageResponse?.data.payload[0];
-        updateProfileData.image = image;
-      }
-      const response = await updateProfile(updateProfileData);
-      form.reset();
-      localStorage.user = JSON.stringify(response.data.payload);
-      toast({
-        title: "Success",
-        text: "Your information has updated successfully",
-        type: "success",
-        icon: "success",
-      }).then(() => {
-        window.location.reload();
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        text: error?.message,
-        type: "error",
-        icon: "error",
-      });
-    }
-  });
-}
-
 export function updateBookHandler() {
   const formUpdateBook = document.querySelector(".form-updatebook");
   let updateBtn = document.querySelectorAll(".update-btn");
   updateBtn.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
-      getBooksById(bookId).then((book) => { console.log(book)});
+      getBooksById(bookId).then((book) => {
+        console.log(book);
+      });
       formUpdateBook.addEventListener("submit", async (e) => {
         e.preventDefault();
         try {
@@ -408,7 +292,7 @@ export function updateBookHandler() {
           const formData = new FormData();
           formData.append(
             "oldImg",
-              getBooksById(bookId).then((book) => book.imageLink)
+            getBooksById(bookId).then((book) => book.imageLink)
           );
           const updateBookData = { ...data };
           if (form.photo.files[0]) {
@@ -419,7 +303,7 @@ export function updateBookHandler() {
             const { _id: image } = imageResponse?.data.payload[0];
             updateBookData.image = image;
           }
-          const response = await updateBook(bookId,updateBookData);
+          const response = await updateBook(bookId, updateBookData);
           form.reset();
           toast({
             title: "Success",
@@ -436,6 +320,68 @@ export function updateBookHandler() {
             icon: "error",
           });
         }
+      });
+    });
+  });
+}
+
+export function deleteBookFromShelfHandler() {
+  let deleteBtn = document.querySelectorAll(".remove-btn");
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const bookId = e.target.parentElement.dataset.id;
+      getBooksById(bookId).then((book) => {
+        console.log(book);
+      });
+      
+       deleteBookFromShelf(bookId).then((response) => {
+        console.log(response);
+        toast({
+          title: "Success",
+          text: "Book has removed successfully",
+          type: "success",
+          icon: "success",
+        }).then(() => {
+          window.location.reload();
+        });
+      }) 
+      .catch((error) => {
+        console.log(error);
+        toast({
+          title: "Error",
+          text: error?.response?.data,
+          type: "error",
+          icon: "error",
+        });
+      });
+    });
+  });
+}
+
+export function deleteBookHandler() {
+  let deleteBtn = document.querySelectorAll(".delete-book-btn");
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const bookId = e.target.parentElement.dataset.id;
+       deleteBook(bookId).then((response) => {
+        console.log(response);
+        toast({
+          title: "Success",
+          text: "Book has deleted successfully",
+          type: "success",
+          icon: "success",
+        }).then(() => {
+          window.location.reload();
+        });
+      }) 
+      .catch((error) => {
+        console.log(error);
+        toast({
+          title: "Error",
+          text: error?.response?.data,
+          type: "error",
+          icon: "error",
+        });
       });
     });
   });

@@ -1,9 +1,9 @@
 import { getBooks, displayBooks } from "./books";
 import { getBookById,displayBookById,displayBookCard,addFavourite,addFavouriteHandler, addComment } from "./book";
+import{getSettingData, updateProfile,displaySettingData,updateProfileHandler} from "./setting";
 import { displayAuthorBook, getAuthor, displayAboutAuthor, displayAuthorName} from "./author";
 import { signInHandler, signUpHandler } from "./auth";
 import {
-  updateProfileHandler,
   ProfileUI,
   getAccaountData,
   displayAccaountData,
@@ -15,6 +15,9 @@ import {
   displayMyBooks,
   displayCountries,
   updateBookHandler,
+  getAvatar,
+  deleteBookHandler,
+  deleteBookFromShelfHandler,
 } from "./profile";
 import {countries} from "country-list-json";
 
@@ -25,11 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
     signInHandler();
   }
   if (location.pathname === "/index.html" || location.pathname === "/") {
+    getAccaountData().then((data) => {    
+     getAvatar(data);
+    });
     getBooks().then((data) => {
       displayBooks(data);
     });
   }
   if (location.pathname === "/book.html" || location.pathname === "book") {
+    getAccaountData().then((data) => {    
+      getAvatar(data);
+     });
     getBookById().then((data) => {
       displayBookById(data);
     });
@@ -41,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } 
 
   if (location.pathname === "/author.html" || location.pathname === "author") {
+    getAccaountData().then((data) => {    
+      getAvatar(data);
+     });
     getBooks().then((data) => {
       displayAuthorBook(data);
     });
@@ -54,14 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
     Promise.all([getAccaountData(), getShelfBooks(), getMyBooks()]).then(
       (data) => {
         displayAccaountData(data[0]);
+        getAvatar(data[0]);
         displayShelfBooks(data[1]);
         displayMyBooks(data[2]);
         displayCountries();
         checkRole(localStorage);
         updateBookHandler();
+        deleteBookFromShelfHandler();
+        deleteBookHandler();
         const loading = document.querySelector(".loader-container");
         document.body.removeChild(loading);
-
         // Modal
         let modal = document.getElementById("myModal");
         let btn = document.querySelectorAll(".update-btn");
@@ -83,6 +97,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     const profileUI = new ProfileUI();
     profileUI.profileEvents();
-    updateProfileHandler();
+  }
+
+  if (location.pathname === "/setting.html") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
+    getSettingData().then((data) => {
+      displaySettingData(data);
+      const loading = document.querySelector(".loader-container");
+      document.body.removeChild(loading);
+      updateProfileHandler();
+    });
   }
 });
