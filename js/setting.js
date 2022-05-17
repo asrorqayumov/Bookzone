@@ -100,7 +100,6 @@ export function displaySettingData(data) {
 export function updateProfileHandler() {
   const formUpdateProfile = document.querySelector(".form-change-data");
   formUpdateProfile.addEventListener("submit", async (e) => {
-      console.log(formUpdateProfile);
     e.preventDefault();
     try {
       const form = e.target;

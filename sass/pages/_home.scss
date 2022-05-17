@@ -51,3 +51,15 @@ form.home__search {
   color: #c9ac8c;
 }
 
+.home__books, .authors-wrapper{
+  display: flex !important;
+  flex-wrap: wrap;
+  .card{
+    margin-top: 20px;
+    margin-right: 42px;
+  }
+}
+
+.home-input{
+  outline: none;
+}

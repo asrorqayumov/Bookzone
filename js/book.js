@@ -19,7 +19,6 @@ export function getOwnBook() {
   bookId().then((data) => {
     displayBookById(data);
     const card = document.querySelector(".card");
-    console.log(data, "databuuu");
     card.forEach((card) => {
       card.addEventListener("click", (e) => {
         const cardDoc = e.target
@@ -47,8 +46,6 @@ export function addComment() {
       text: form.comment.value,
       book: id
     };
-
-    console.log(data, "data");
     getComment(data)
       .then((response) => {
         toast({
@@ -60,7 +57,6 @@ export function addComment() {
       })
 
       .catch((err) => {
-        console.log(err, "err");
         toast({
           title: "Error",
           text: err?.response.data.error.message,
@@ -81,7 +77,6 @@ export function addFavouriteHandler() {
   const favBtn = document.querySelector(".favbtn");
   favBtn.addEventListener("click", (e) => {
     let id = e.target.dataset.id;
-    console.log(id, "id");
     e.preventDefault();
     const data = {
       bookId: id
@@ -89,7 +84,6 @@ export function addFavouriteHandler() {
 
     addFavourite(data)
       .then((response) => {
-        console.log(response, "response");
         const { data } = response;
         const favoriteBtn = e.target.closest(".favbtn").dataset.favlist;
         const favorite = favoriteBtn == "true" ? true : false;
@@ -101,7 +95,6 @@ export function addFavouriteHandler() {
 export async function getBookById(_id) {
   try {
     const response = await axios(`/books/${_id}`);
-    console.log(response);
     return response?.data.payload;
   } catch (error) {
     throw new Error(error.message);
@@ -113,7 +106,6 @@ export function displayBookById(data) {
   let formWrapper = document.querySelector(".form-comment-wrapper");
   let contentDom = "";
   let formHtml = "";
-  console.log(data, "data");
     const { title, description, author, comments, image, rate, price, year, pages, _id, category } = data?.book;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
