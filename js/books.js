@@ -14,6 +14,7 @@ export function displayBooks(data) {
   const homeBooksDom = document.querySelector(".home__books");
   let contentDom = "";
   data?.docs.forEach((book) => {
+    console.log(book);
     const { title, author, comments, image, rate, _id } = book;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
@@ -41,7 +42,6 @@ export function bookEvent() {
     bookDom.addEventListener("click", (e) => {
       e.preventDefault();
       const id = e.target.closest("[data-id]").dataset.id;
-      console.log(bookNodeList, id);
       history.pushState({ id }, null, `/book.html`);
       location.reload();
     });

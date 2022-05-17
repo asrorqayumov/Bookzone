@@ -68,7 +68,7 @@
       </div>
 
     <div class="container">
-      <form class="form-change-data row" action="">
+      <form class="form-change-data row" autocomplete="on" action="">
         <div class="col-md-4">
           <img
             class="profile-setting-img"
@@ -147,7 +147,6 @@
     <script>
       function previewFileUploadImg() {
         let preview = document.querySelector(".profile-setting-img");
-        console.log(preview);
         let file = document.querySelector("#upload-profile-photo").files[0];
         let reader = new FileReader();
         reader.onloadend = function () {

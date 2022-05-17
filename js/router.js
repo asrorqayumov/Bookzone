@@ -15,7 +15,13 @@ import {
   displaySettingData,
   updateProfileHandler,
 } from "./setting";
-import { getAuthors, displayAuthors } from "./authors";
+import { getAuthors, displayAuthors, authorEvent } from "./authors";
+import {
+  getAuthorByid,
+  displayAuthor,
+  getBooksFromAuthors,
+  displayBooksFromAuthor,
+} from "./author";
 import { signInHandler, signUpHandler } from "./auth";
 import {
   ProfileUI,
@@ -51,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/authors.html") {
     getAuthors().then((data) => {
       displayAuthors(data);
+      authorEvent();
+      const loading = document.querySelector(".loader-container");
+      document.body.removeChild(loading);
     });
   }
   if (
@@ -61,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     getBooks().then((data) => {
       displayBooks(data);
       bookEvent();
+      const loading = document.querySelector(".loader-container");
+      document.body.removeChild(loading);
     });
   }
   if (location.pathname === "/book.html" || location.pathname === "book") {
     getBookById(history.state.id).then((data) => {
-      console.log(data, "data");
       displayBookById(data);
     });
     // bookId().then((data)=>{
@@ -81,12 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (location.pathname === "/author.html" || location.pathname === "author") {
-    getBooks().then((data) => {
-      displayAuthorBook(data);
+    getAuthorByid(history.state.authorid).then((data) => {
+      displayAuthor(data);
     });
-    getAuthor().then((data) => {
-      displayAboutAuthor(data);
-      displayAuthorName(data);
+    getBooksFromAuthors(history.state.authorid).then((data) => {
+      displayBooksFromAuthor(data);
     });
   }
 

@@ -15,10 +15,8 @@ export async function getAuthors() {
 
 export function displayAuthors(data) {
   const homeBooksDom = document.querySelector(".authors-wrapper");
-  console.log(homeBooksDom);
   let contentDom = "";
   data.forEach((author) => {
-    console.log(author);
     const { firstName, lastName, _id , date_of_birth} = author;
     contentDom += `
     <div class="card" data-id=${_id}>
@@ -44,9 +42,8 @@ export function authorEvent() {
   authorList.forEach((author) => {
     author.addEventListener("click", (e) => {
       e.preventDefault();
-      const id = e.target.closest("[data-id]").dataset.id;
-      console.log(authorList, id);
-      history.pushState({ id }, null, `/author.html`);
+      const authorid = e.target.closest("[data-id]").dataset.id;
+      history.pushState({ authorid }, null, `/author.html`);
       location.reload();
     });
   });

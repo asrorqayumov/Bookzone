@@ -19,9 +19,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    </style>
   </head>
 
   <body>
+    <div class="loader-container">
+      <figure class="figure-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </figure>
+    </div>
     <div class="nav">
       <input type="checkbox" id="nav-check" />
       <div class="nav-header">
@@ -65,7 +73,7 @@
       </div>
       <a class="link-auth" href="auth.html"> Sign in </a>
     </div>
-    <section id="home__page">
+    <section id="home__page" class="authors-section">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -80,78 +88,8 @@
                 <i class="fa-solid fa-magnifying-glass"></i>Izlash
               </button>
             </form>
-            <h3 class="home-title">ASOSIY KATEGORIYALAR</h3>
-            <ul class="tab__menu">
-              <li class="active" data-target="#bir">Temuriylar Davri</li>
-              <li data-target="#ikki">Jadid adabiyoti</li>
-              <li data-target="#uch">Sovet davri</li>
-              <li data-target="#tort">Mustaqillik davri</li>
-            </ul>
-
-            <div class="tab__content">
               <div data-content id="bir" class="active authors-wrapper">
-                <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/avloniy.png" alt="Avatar" /> -->
-                  </a>
-                  <div class="card-body pt-2">
-                    <a href="author.html" class="card-title">Abdulla Avloniy</a>
-                    <div class="card-text pt-1">1878-1934</div>
-                  </div>
-                  <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
-                  </div>
-                </div>
-              </div>
-              <div data-content id="ikki">
-                <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/authors/nusrat.png" alt="Avatar" /> -->
-                  </a>
-                  <div class="card-body pt-2">
-                    <a href="author.html" class="card-title">Nusrat Rahmat</a>
-                    <div class="card-text pt-1">1878-1934</div>
-                  </div>
-                  <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
-                  </div>
-                </div>
-              </div>
-              <div data-content id="uch">
-                <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/home/authors/hamza.png" alt="Avatar" /> -->
-                  </a>
-                  <div class="card-body pt-2">
-                    <a href="author.html" class="card-title"
-                      >Hamza Hakimzoda Niyoziy</a
-                    >
-                    <div class="card-text pt-1">1878-1934</div>
-                  </div>
-                  <div class="card-footer pt-1">
-                    <i class="fa-solid fa-headphones"></i>
-                    41
-                  </div>
-                </div>
-              </div>
-              <div data-content id="tort">
-                <div class="card">
-                  <a href="author.html">
-                    <!-- <img src="./assets/images/book.png" alt="Avatar" /> -->
-                  </a>
-                  <div class="card-body pt-2">
-                    <a href="author.html" class="card-title"
-                      >dunyoning ishlari</a
-                    >
-                    <div class="card-text pt-1">O'tkir Hoshimov</div>
-                  </div>
-                  <div class="card-footer pt-1">
-                    <i class="fa-solid fa-star"></i>
-                    4.1 - 3400 ta fikrlar
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

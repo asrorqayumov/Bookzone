@@ -268,7 +268,6 @@ export function updateBookHandler() {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
       getBooksById(bookId).then((book) => {
-        console.log(book);
       });
       formUpdateBook.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -312,7 +311,6 @@ export function updateBookHandler() {
             icon: "success",
           });
         } catch (error) {
-          console.log(error);
           toast({
             title: "Error",
             text: error?.response?.data,
@@ -331,11 +329,10 @@ export function deleteBookFromShelfHandler() {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
       getBooksById(bookId).then((book) => {
-        console.log(book);
+       
       });
       
        deleteBookFromShelf(bookId).then((response) => {
-        console.log(response);
         toast({
           title: "Success",
           text: "Book has removed successfully",
@@ -346,7 +343,6 @@ export function deleteBookFromShelfHandler() {
         });
       }) 
       .catch((error) => {
-        console.log(error);
         toast({
           title: "Error",
           text: error?.response?.data,
@@ -364,7 +360,6 @@ export function deleteBookHandler() {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
        deleteBook(bookId).then((response) => {
-        console.log(response);
         toast({
           title: "Success",
           text: "Book has deleted successfully",
@@ -375,7 +370,6 @@ export function deleteBookHandler() {
         });
       }) 
       .catch((error) => {
-        console.log(error);
         toast({
           title: "Error",
           text: error?.response?.data,
@@ -430,13 +424,11 @@ export class ProfileUI {
     const formData = new FormData();
     if (form.photo.files[0]) {
       for (const file of form.photo.files) {
-        console.log(file);
-        formData.append("file", file);
+           formData.append("files", file);
       }
     }
 
     fileUpload(formData).then((response) => {
-      console.log(response);
       const { _id: image } = response?.data.payload[0];
       data.image = image;
     });
