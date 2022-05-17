@@ -5,23 +5,51 @@ import configs from "../configs";
 const { DEFAULT_IMG } = configs;
 
 
+export function bookId(id) {
+  return axios(`/books/${id}`);
+}
+
 export function getComment(data) {
   return axios.post("/books/comment", data);
 }
 
-export function addComment(){
+// get book by id
+
+export function getOwnBook() {
+  bookId().then((data) => {
+    displayBookById(data);
+    const card = document.querySelector(".card");
+    console.log(data, "databuuu");
+    card.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        const cardDoc = e.target
+        let bookId = cardDoc.dataset.id;
+        history.pushState({ bookId }, null, `/book.html`);
+        location.reload();
+      });
+    });
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+
+}
+
+
+
+export function addComment() {
   const formComment = document.querySelector(".form-comment");
   formComment.addEventListener("submit", async (e) => {
     e.preventDefault();
-      const form = e.target;
-      let id = form.dataset.id;
-      const data = {
-        text: form.comment.value,
-        book: id
-      };
-     
-      console.log(data, "data");
-      getComment(data)
+    const form = e.target;
+    let id = form.dataset.id;
+    const data = {
+      text: form.comment.value,
+      book: id
+    };
+
+    console.log(data, "data");
+    getComment(data)
       .then((response) => {
         toast({
           title: "Success",
@@ -30,23 +58,23 @@ export function addComment(){
           icon: "success",
         });
       })
-      
-    .catch((err) => {
-      console.log(err, "err");
-      toast({
-        title: "Error",
-        text: err?.response.data.error.message,
-        type: "error",
-        icon: "error",
+
+      .catch((err) => {
+        console.log(err, "err");
+        toast({
+          title: "Error",
+          text: err?.response.data.error.message,
+          type: "error",
+          icon: "error",
+        });
       });
-    });
   });
 }
 
 // add book shelf
 
 export async function addFavourite(data) {
-    return axios.post("/users/shelf", data);
+  return axios.post("/users/shelf", data);
 }
 
 export function addFavouriteHandler() {
@@ -60,12 +88,12 @@ export function addFavouriteHandler() {
     }
 
     addFavourite(data)
-    .then((response) =>{
-      console.log(response, "response");
-      const { data } = response;
-      const favoriteBtn = e.target.closest(".favbtn").dataset.favlist;
-      const favorite = favoriteBtn == "true" ? true : false;
-    })
+      .then((response) => {
+        console.log(response, "response");
+        const { data } = response;
+        const favoriteBtn = e.target.closest(".favbtn").dataset.favlist;
+        const favorite = favoriteBtn == "true" ? true : false;
+      })
   });
 }
 
@@ -73,6 +101,7 @@ export function addFavouriteHandler() {
 export async function getBookById(_id) {
   try {
     const response = await axios(`/books`);
+    console.log(response);
     return response?.data.payload;
   } catch (error) {
     throw new Error(error.message);
@@ -106,7 +135,7 @@ export function displayBookById(data) {
     
       <div class="about__book">
         <div class="row">
-          <h1 class="about__book-title">${title}</h1>
+          <h1 class="about__book-title">${title} </h1>
         </div>
     
         <div class="row about__author-wrapper">
@@ -200,11 +229,15 @@ export function displayBookCard(data) {
   const homeBooksDom = document.querySelector(".book-card-detail");
   let contentDom = "";
   data?.docs.forEach((book) => {
-    const { title, author, comments, image, rate } = book;
+    const { title, author, comments, image, rate, _id ,category} = book;
+    const {classic, biography, science} = category;
     const { firstName, lastName } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
-    contentDom += `
-        <div class="card">
+    for (let i = 0; i < category.length; i++) {
+      const check = category[classic] 
+      if (check == true) {
+        contentDom += `
+        <div class="card" data-id="${_id}">
         <a href="book.html">
           <img src="${imgUrl}" alt="${title}" />
         </a>
@@ -217,6 +250,9 @@ export function displayBookCard(data) {
           ${rate} - ${comments.length} ta fikrlar
         </div>
       </div>`;
-  });
-  homeBooksDom.innerHTML = contentDom;
+    }
+    homeBooksDom.innerHTML = contentDom;
+  }
+  
+});
 }

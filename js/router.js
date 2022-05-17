@@ -1,5 +1,5 @@
 import { getBooks, displayBooks } from "./books";
-import { getBookById,displayBookById,displayBookCard,addFavourite,addFavouriteHandler, addComment } from "./book";
+import { getBookById,displayBookById,displayBookCard,addFavourite,addFavouriteHandler,bookId, addComment,getOwnBook } from "./book";
 import { displayAuthorBook, getAuthor, displayAboutAuthor, displayAuthorName} from "./author";
 import { signInHandler, signUpHandler } from "./auth";
 import {
@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     getBookById().then((data) => {
       displayBookById(data);
     });
+    // bookId().then((data)=>{
+      getOwnBook()
+    // })
     getBooks().then((data) => {
       displayBookCard(data);
       addFavouriteHandler();
