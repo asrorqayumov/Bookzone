@@ -1,0 +1,57 @@
+.form-change-data {
+  margin-top: 100px;
+    .col-md-4 {
+     
+      .profile-setting-img {
+        width: 185px;
+        height: 185px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+      }
+      img[src=""] {
+        visibility: hidden;
+      }
+      label {
+        position: relative;
+        background: #fff;
+        padding: 12px 9px 11px 9px;
+        border-radius: 8px;
+        bottom: 20px;
+        right: 40px;
+        cursor: pointer !important;
+        i {
+          font-size: 20px;
+          color: #000;
+        }
+      }
+      input {
+        display: none;
+      }
+    }
+    .col-md-8 {
+      font-family: "Poppins";
+      font-style: normal;
+      h2 {
+        font-weight: 500;
+        font-size: 25px;
+      }
+      label {
+        position: absolute;
+        font-size: 16px;
+        color: rgb(236, 229, 229);
+      }
+      input {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background: #232323;
+        color: #fff;
+      }
+      input::placeholder {
+        color: #fff;
+      }
+    }
+  }
