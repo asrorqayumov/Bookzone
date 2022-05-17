@@ -18,7 +18,7 @@ export function displayCountries() {
   let countryList = document.querySelectorAll(".countries-list");
   let html = "";
   countries.forEach((country) => {
-    html += `<option value="${country.name.toLocaleLowerCase()}">${
+    html += `<option value="${country.name.toLocaleLowerCase().trim()}">${
       country.name
     }</option>`;
   });
@@ -92,11 +92,11 @@ export function updateBook(id, data) {
   return axios.patch(`/books/${id}`, data);
 }
 
-export function deleteBookFromShelf(id, ) {
+export function deleteBookFromShelf(id) {
   return axios.delete(`/users/shelf/${id}`);
 }
 
-export function deleteBook(id, ) {
+export function deleteBook(id) {
   return axios.delete(`/books/${id}`);
 }
 
@@ -163,9 +163,9 @@ export function displayMyBooks(data) {
   const homeBooksDom = document.querySelector(".profile-mybooks-row");
   let contentDom = "";
   data?.docs?.forEach((book) => {
-    const { title, author, comments, _id, imageLink, rate } = book;
+    const { title, author, comments, _id, image, rate } = book;
     const { firstName, lastName } = author;
-    const imgUrl = imageLink?.url ? imageLink.url : DEFAULT_IMG;
+    const imgUrl = image?.url ? image.url : DEFAULT_IMG;
     contentDom += `
         <div class="card" data-id= ${_id}>
         <a href="book.html">
@@ -232,9 +232,9 @@ export function displayMyBooks(data) {
             <option class="text-muted category-option" value="">
               Category
             </option>
-            <option value="classic ">Classic</option>
-            <option value="biography  ">Biography</option>
-            <option value="science ">Science</option>
+            <option value="classic">Classic</option>
+            <option value="biography">Biography</option>
+            <option value="science">Science</option>
           </select>
           <select class="mt-3 countries-list" name="country">
             <option class="country-item" value="">Country</option>
@@ -260,67 +260,122 @@ export function displayMyBooks(data) {
   `;
   homeBooksDom.innerHTML = modalContent + contentDom;
 }
+export const modalToggler = () => {
+  let modal = document.getElementById("myModal");
+  let btn = document.querySelectorAll(".update-btn");
+  let span = document.getElementsByClassName("close")[0];
+  btn.forEach((btn) => {
+    btn.onclick = async () => {
+      const id = btn.parentElement.dataset.id;
+      const { book } = await getBooksById(id);
+      modal.style.display = "flex";
+      modal.dataset.id = id;
+      const { title, author, comments, _id, image, country, category, rate } =
+        book;
+      // const { firstName, lastName } = author;
+      const imgUrl = image?.url ? image.url : DEFAULT_IMG;
+      const form = document.querySelector(".form-updatebook");
+      const inputsNodeList = form.querySelectorAll("[name]");
+      console.log(book, "sbdhbshdbshbdhbs");
+      inputsNodeList.forEach((input) => {
+        const blackList = ["country", "category", "photo"];
+        if (!blackList.includes(input.name)) {
+          const value = book[input.name];
+          input.value = value || "";
+        } else {
+          if (input.name == "photo") {
+            const img = document.querySelector(".upload-bookimg");
+            img.src = imgUrl;
+          } else {
+            const option = document.querySelector(
+              `select[name="category"] > option[value="${category}"]`
+            );
+            const option1 = document.querySelector(
+              `select[name="country"] > option[value="${country}"]`
+            );
+            console.log(option, option1, country);
+            if (option && option1) {
+              option.selected = true;
+              option1.selected = true;
+            }
+          }
+        }
 
+        // console.log(input, "inputs njhdsjh", input?.name);
+        // console.log(book?.book[input?.name], "book[input?.name]", input);
+      });
+    };
+  });
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+};
 export function updateBookHandler() {
   const formUpdateBook = document.querySelector(".form-updatebook");
   let updateBtn = document.querySelectorAll(".update-btn");
-  updateBtn.forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const bookId = e.target.parentElement.dataset.id;
-      getBooksById(bookId).then((book) => {
-      });
-      formUpdateBook.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        try {
-          const form = e.target;
-          const data = {
-            title: form.title.value.trim(),
-            pages: form.pages.value.trim(),
-            year: form.year.value.trim(),
-            price: form.price.value.trim(),
-            category: form.category.value.trim(),
-            country: form.country.value.trim(),
-            language: form.language.value.trim(),
-            description: form.description.value.trim(),
-          };
-          for (const key in data) {
-            if (!data[key]) {
-              delete data[key];
-            }
-          }
-          const formData = new FormData();
-          formData.append(
-            "oldImg",
-            getBooksById(bookId).then((book) => book.imageLink)
-          );
-          const updateBookData = { ...data };
-          if (form.photo.files[0]) {
-            for (const file of form.photo.files) {
-              formData.append("files", file);
-            }
-            const imageResponse = await fileUpload(formData);
-            const { _id: image } = imageResponse?.data.payload[0];
-            updateBookData.image = image;
-          }
-          const response = await updateBook(bookId, updateBookData);
-          form.reset();
-          toast({
-            title: "Success",
-            text: "Your information has updated successfully",
-            type: "success",
-            icon: "success",
-          });
-        } catch (error) {
-          toast({
-            title: "Error",
-            text: error?.response?.data,
-            type: "error",
-            icon: "error",
-          });
+  // updateBtn.forEach((btn) => {
+  //   btn.addEventListener("click", async (e) => {
+  //     getBooksById(bookId).then((book) => {});
+  formUpdateBook.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const form = e.target;
+      const bookId = form?.closest("[data-id]").dataset.id;
+      console.log(form, "form", bookId);
+      const data = {
+        title: form.title.value.trim(),
+        pages: form.pages.value.trim(),
+        year: form.year.value.trim(),
+        price: form.price.value.trim(),
+        category: form.category.value.trim(),
+        country: form.country.value.trim(),
+        language: form.language.value.trim(),
+        description: form.description.value.trim(),
+      };
+      for (const key in data) {
+        if (!data[key]) {
+          delete data[key];
         }
+      }
+      const formData = new FormData();
+      formData.append(
+        "oldImg",
+        getBooksById(bookId).then((book) => book.imageLink)
+      );
+      const updateBookData = { ...data };
+      if (form.photo.files[0]) {
+        for (const file of form.photo.files) {
+          formData.append("files", file);
+        }
+        const imageResponse = await fileUpload(formData);
+        const { _id: image } = imageResponse?.data.payload[0];
+        updateBookData.image = image;
+      }
+      const response = await updateBook(bookId, updateBookData);
+      form.reset();
+      toast({
+        title: "Success",
+        text: "Your information has updated successfully",
+        type: "success",
+        icon: "success",
       });
-    });
+    } catch (error) {
+      toast({
+        title: "Error",
+        text: error?.message,
+        type: "error",
+        icon: "error",
+      });
+    }
   });
+  //   });
+  // });
 }
 
 export function deleteBookFromShelfHandler() {
@@ -328,28 +383,27 @@ export function deleteBookFromShelfHandler() {
   deleteBtn.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
-      getBooksById(bookId).then((book) => {
-       
-      });
-      
-       deleteBookFromShelf(bookId).then((response) => {
-        toast({
-          title: "Success",
-          text: "Book has removed successfully",
-          type: "success",
-          icon: "success",
-        }).then(() => {
-          window.location.reload();
+      getBooksById(bookId).then((book) => {});
+
+      deleteBookFromShelf(bookId)
+        .then((response) => {
+          toast({
+            title: "Success",
+            text: "Book has removed successfully",
+            type: "success",
+            icon: "success",
+          }).then(() => {
+            window.location.reload();
+          });
+        })
+        .catch((error) => {
+          toast({
+            title: "Error",
+            text: error?.response?.data,
+            type: "error",
+            icon: "error",
+          });
         });
-      }) 
-      .catch((error) => {
-        toast({
-          title: "Error",
-          text: error?.response?.data,
-          type: "error",
-          icon: "error",
-        });
-      });
     });
   });
 }
@@ -359,24 +413,25 @@ export function deleteBookHandler() {
   deleteBtn.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const bookId = e.target.parentElement.dataset.id;
-       deleteBook(bookId).then((response) => {
-        toast({
-          title: "Success",
-          text: "Book has deleted successfully",
-          type: "success",
-          icon: "success",
-        }).then(() => {
-          window.location.reload();
+      deleteBook(bookId)
+        .then((response) => {
+          toast({
+            title: "Success",
+            text: "Book has deleted successfully",
+            type: "success",
+            icon: "success",
+          }).then(() => {
+            window.location.reload();
+          });
+        })
+        .catch((error) => {
+          toast({
+            title: "Error",
+            text: error?.response?.data,
+            type: "error",
+            icon: "error",
+          });
         });
-      }) 
-      .catch((error) => {
-        toast({
-          title: "Error",
-          text: error?.response?.data,
-          type: "error",
-          icon: "error",
-        });
-      });
     });
   });
 }
@@ -393,63 +448,60 @@ export class ProfileUI {
     addBookForm.addEventListener("submit", this.addBook);
   }
 
-  addBook(e) {
-    e.preventDefault();
-    const form = e.target;
-    const data = {
-      title: form?.title?.value,
-      description: form?.description?.value,
-      country: form?.country?.value,
-      language: form?.language?.value,
-      link: form?.link?.value,
-      pages: form?.pages?.value,
-      year: form?.year?.value,
-      rate: form?.rate?.value,
-      price: form?.price?.value,
-      category: form?.category?.value,
-      isPublished: form?.isPublished?.value,
-      isFeatured: form?.isFeatured?.value,
-    };
-    for (const key in data) {
-      if (!data[key]) {
-        delete data[key];
+  async addBook(e) {
+    try {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        title: form?.title?.value,
+        description: form?.description?.value,
+        country: form?.country?.value,
+        language: form?.language?.value,
+        link: form?.link?.value,
+        pages: form?.pages?.value,
+        year: form?.year?.value,
+        rate: form?.rate?.value,
+        price: form?.price?.value,
+        category: form?.category?.value,
+        isPublished: form?.isPublished?.value,
+        isFeatured: form?.isFeatured?.value,
+      };
+      for (const key in data) {
+        if (!data[key]) {
+          delete data[key];
+        }
       }
-    }
-    for (const key in data) {
-      if (typeof data[key] === "string") {
-        data[key] = data[key].trim();
+      for (const key in data) {
+        if (typeof data[key] === "string") {
+          data[key] = data[key].trim();
+        }
       }
-    }
 
-    const formData = new FormData();
-    if (form.photo.files[0]) {
-      for (const file of form.photo.files) {
-           formData.append("files", file);
+      const formData = new FormData();
+      if (form.photo.files[0]) {
+        for (const file of form.photo.files) {
+          formData.append("files", file);
+        }
+        const fileResponse = await fileUpload(formData);
+        const { _id: image } = fileResponse?.data.payload[0];
+        data.image = image;
       }
-    }
-
-    fileUpload(formData).then((response) => {
-      const { _id: image } = response?.data.payload[0];
-      data.image = image;
-    });
-
-    createBook(data)
-      .then((response) => {
-        toast({
-          title: "Success",
-          text: "Book added successfully",
-          type: "success",
-          icon: "success",
-        });
-      })
-      .catch((err) => {
-        toast({
-          title: "Error",
-          text: err.response.data.error,
-          type: "error",
-          icon: "error",
-        });
+      console.log(data, "sata from book");
+      await createBook(data);
+      toast({
+        title: "Success",
+        text: "Book added successfully",
+        type: "success",
+        icon: "success",
       });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        text: err.response.data.error,
+        type: "error",
+        icon: "error",
+      });
+    }
   }
 }
-

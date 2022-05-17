@@ -39,6 +39,7 @@ import {
   deleteBookHandler,
   deleteBookFromShelfHandler,
   modal,
+  modalToggler,
 } from "./profile";
 
 window.addEventListener("popstate", (e) => {
@@ -112,23 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBookHandler();
         const loading = document.querySelector(".loader-container");
         document.body.removeChild(loading);
-
-        let modal = document.getElementById("myModal");
-        let btn = document.querySelectorAll(".update-btn");
-        let span = document.getElementsByClassName("close")[0];
-        btn.forEach((btn) => {
-          btn.onclick = () => {
-            modal.style.display = "flex";
-          };
-        });
-        span.onclick = function () {
-          modal.style.display = "none";
-        };
-        window.onclick = function (event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        };
+        modalToggler()
       }
     );
     const profileUI = new ProfileUI();
