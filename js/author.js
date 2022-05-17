@@ -12,6 +12,7 @@ const { DEFAULT_IMG } = configs;
 export async function getAuthor() {
   try {
     const response = await axios("/authors");
+    console.log(response);
     return response?.data;
   } catch (error) {
     throw new Error(error.message);
@@ -24,6 +25,7 @@ export function displayAboutAuthor(data) {
   data?.payload.forEach((author) => {
     const { firstName, lastName, date_of_birth, date_of_death,image, _id } = author;
     const imgUrl = image?.url ? image.url : DEFAULT_IMG;
+    const checkDeath = date_of_death ? date_of_death : "living"
 
     contentAuthor = `
     
@@ -49,7 +51,7 @@ export function displayAboutAuthor(data) {
       <div class="col author__death-wrapper">
 
         <p class="death__title">O'lgan sanasi</p>
-        <h1 class="death__date">${moment(date_of_death).format("L") }</h1>
+        <h1 class="death__date">${checkDeath }</h1>
         <p class="death__location">Toshkent, Uzbekistan</p>
 
       </div>

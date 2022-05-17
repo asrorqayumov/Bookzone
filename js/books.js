@@ -36,9 +36,7 @@ export function displayBooks(data) {
 }
 
 
-export function getBookById(id) {
-  return axios(`/books/${id}`);
-}
+
 
 export function createBook(data) {
   return axios.post("/books", data);
