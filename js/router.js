@@ -48,14 +48,14 @@ window.addEventListener("popstate", (e) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   checkUser(localStorage);
-  getAccaountData().then((data) => {
-    getAvatar(data);
-  });
   if (location.pathname === "/auth.html") {
     signUpHandler();
     signInHandler();
   }
   if (location.pathname === "/authors.html") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     getAuthors().then((data) => {
       displayAuthors(data);
       authorEvent();
@@ -68,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
     location.pathname === "/" ||
     location.pathname === "/books.html"
   ) {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     getBooks().then((data) => {
       displayBooks(data);
       bookEvent();
@@ -76,6 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (location.pathname === "/book.html" || location.pathname === "book") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     getBookById(history.state.id).then((data) => {
       displayBookById(data);
     });
@@ -92,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (location.pathname === "/author.html" || location.pathname === "author") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     getAuthorByid(history.state.authorid).then((data) => {
       displayAuthor(data);
     });
@@ -101,6 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (location.pathname === "/profile.html") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     Promise.all([getAccaountData(), getShelfBooks(), getMyBooks()]).then(
       (data) => {
         displayAccaountData(data[0]);
@@ -121,6 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (location.pathname === "/setting.html") {
+    getAccaountData().then((data) => {
+      getAvatar(data);
+    });
     getSettingData().then((data) => {
       displaySettingData(data);
       const loading = document.querySelector(".loader-container");

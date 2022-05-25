@@ -100,7 +100,6 @@ export async function getBooksFromAuthors(id) {
 }
 
 export function displayBooksFromAuthor(data) {
-  console.log(data);
   const homeBooksDom = document.querySelector(".author__books-wrapper");
   let contentDom = "";
   data?.forEach((book = {}) => {

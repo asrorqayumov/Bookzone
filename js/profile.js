@@ -276,7 +276,6 @@ export const modalToggler = () => {
       const imgUrl = image?.url ? image.url : DEFAULT_IMG;
       const form = document.querySelector(".form-updatebook");
       const inputsNodeList = form.querySelectorAll("[name]");
-      console.log(book, "sbdhbshdbshbdhbs");
       inputsNodeList.forEach((input) => {
         const blackList = ["country", "category", "photo"];
         if (!blackList.includes(input.name)) {
@@ -293,16 +292,12 @@ export const modalToggler = () => {
             const option1 = document.querySelector(
               `select[name="country"] > option[value="${country}"]`
             );
-            console.log(option, option1, country);
             if (option && option1) {
               option.selected = true;
               option1.selected = true;
             }
           }
         }
-
-        // console.log(input, "inputs njhdsjh", input?.name);
-        // console.log(book?.book[input?.name], "book[input?.name]", input);
       });
     };
   });
@@ -327,7 +322,6 @@ export function updateBookHandler() {
     try {
       const form = e.target;
       const bookId = form?.closest("[data-id]").dataset.id;
-      console.log(form, "form", bookId);
       const data = {
         title: form.title.value.trim(),
         pages: form.pages.value.trim(),
@@ -486,7 +480,6 @@ export class ProfileUI {
         const { _id: image } = fileResponse?.data.payload[0];
         data.image = image;
       }
-      console.log(data, "sata from book");
       await createBook(data);
       toast({
         title: "Success",
