@@ -47,7 +47,8 @@
     "country-list-json": "^1.0.7",
     "modal-vanilla": "^0.12.0",
     "moment": "^2.29.3",
-    "sweetalert2": "^11.4.13"
+    "sweetalert2": "^11.4.13",
+    "yarn": "^1.22.22"
   },
   "proxy": "http://localhost:8000"
 }
